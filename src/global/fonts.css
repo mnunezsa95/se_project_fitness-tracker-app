@@ -1,0 +1,46 @@
+/*https://font.download/font/mona-sans*/
+
+@font-face {
+  font-family: "Mona-Sans-Regular";
+  src: url("../src/vendor/fonts/Mona-Sans-Regular.woff");
+}
+
+@font-face {
+  font-family: "Mona-Sans-RegularWide";
+  src: url("../src/vendor/fonts/Mona-Sans-RegularWide.woff");
+}
+
+@font-face {
+  font-family: "Mona-Sans-RegularNarrow";
+  src: url("../src/vendor/fonts/Mona-Sans-RegularNarrow.woff");
+}
+
+@font-face {
+  font-family: "Mona-Sans-Medium";
+  src: url("../src/vendor/fonts/Mona-Sans-Medium.woff");
+}
+
+@font-face {
+  font-family: "Mona-Sans-MediumWide";
+  src: url("../src/vendor/fonts/Mona-Sans-MediumWide.woff");
+}
+
+@font-face {
+  font-family: "Mona-Sans-MediumNarrow";
+  src: url("../src/vendor/fonts/Mona-Sans-MediumNarrow.woff");
+}
+
+@font-face {
+  font-family: "Mona-Sans-Bold";
+  src: url("../src/vendor/fonts/Mona-Sans-Bold.woff");
+}
+
+@font-face {
+  font-family: "Mona-Sans-BoldWide";
+  src: url("../src/vendor/fonts/Mona-Sans-BoldWide.woff");
+}
+
+@font-face {
+  font-family: "Mona-Sans-BoldNarrow";
+  src: url("../src/vendor/fonts/Mona-Sans-BoldNarrow.woff");
+}

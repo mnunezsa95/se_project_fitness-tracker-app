@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <h2>Hello, Marlon</h2>
+      <h2 className="p-10 sm:p-0 xxl:p-0">Statistics</h2>
     </>
   );
 }
