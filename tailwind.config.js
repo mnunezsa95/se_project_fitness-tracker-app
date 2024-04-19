@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "selector",
   theme: {
     colors: {
       black: "#14181D",
       blue: "#3586FF",
       grey: "#898D93",
+      darkGrey: "#1D2026",
       white: "#FFFFFF",
       green: "#25B142",
     },
@@ -31,6 +33,5 @@ export default {
   scale: {
     2: "2.0",
   },
-
   plugins: [],
 };
