@@ -1,26 +1,33 @@
-import React from "react";
+import { Paper, Switch } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { Paper } from "@mui/material";
-import DarkModeSwitch from "./components/DarkModeSwitch";
-import useDarkMode from "./hooks/useDarkMode";
+import { useState } from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function App() {
-  const [darkMode, toggleDarkMode] = useDarkMode();
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [mode, setMode] = useState(prefersDarkMode);
+
   const appTheme = createTheme({
     palette: {
-      mode: darkMode ? "dark" : "light",
+      mode: mode ? "dark" : "light",
     },
   });
 
+  const handleChange = () => {
+    if (mode) {
+      setMode(false);
+    } else {
+      setMode(true);
+    }
+  };
+
   return (
-    <>
-      <ThemeProvider theme={appTheme}>
-        <Paper elevation={0} sx={{ height: "100vh" }} square>
-          <DarkModeSwitch checked={darkMode} onChange={toggleDarkMode} />
-          <h1 className="text-[50px]">Dark Mode</h1>
-        </Paper>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={appTheme}>
+      <Paper elevation={0} sx={{ height: "100vh" }} square>
+        <h1>Dark Mode Tutorial</h1>
+        <Switch checked={mode} onChange={handleChange} inputProps={{ "aria-label": "controlled" }} />
+      </Paper>
+    </ThemeProvider>
   );
 }
 
