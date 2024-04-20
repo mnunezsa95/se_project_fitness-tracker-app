@@ -1,17 +1,13 @@
 // DarkModeSwitch.jsx
-import React, { useState } from "react";
+import React from "react";
 import { Switch } from "@mui/material";
 
-const DarkModeSwitch = ({ defaultMode, onChange }) => {
-  const [mode, setMode] = useState(defaultMode);
-
+const DarkModeSwitch = ({ checked, onChange }) => {
   const handleToggleChange = () => {
-    const newMode = !mode;
-    setMode(newMode);
-    onChange(newMode);
+    onChange(!checked);
   };
 
-  return <Switch checked={mode} onChange={handleToggleChange} inputProps={{ "aria-label": "controlled" }} />;
+  return <Switch checked={checked} onChange={handleToggleChange} inputProps={{ "aria-label": "controlled" }} />;
 };
 
 export default DarkModeSwitch;

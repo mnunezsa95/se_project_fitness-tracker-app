@@ -1,27 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { Paper } from "@mui/material";
 import DarkModeSwitch from "./components/DarkModeSwitch";
+import useDarkMode from "./hooks/useDarkMode";
 
 function App() {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [mode, setMode] = useState(prefersDarkMode);
+  const [darkMode, toggleDarkMode] = useDarkMode();
   const appTheme = createTheme({
     palette: {
-      mode: mode ? "dark" : "light",
+      mode: darkMode ? "dark" : "light",
     },
   });
-
-  const handleModeChange = (newMode) => {
-    setMode(newMode);
-  };
 
   return (
     <>
       <ThemeProvider theme={appTheme}>
         <Paper elevation={0} sx={{ height: "100vh" }} square>
-          <DarkModeSwitch defaultMode={mode} onChange={handleModeChange} />
+          <DarkModeSwitch checked={darkMode} onChange={toggleDarkMode} />
           <h1 className="text-[50px]">Dark Mode</h1>
         </Paper>
       </ThemeProvider>
