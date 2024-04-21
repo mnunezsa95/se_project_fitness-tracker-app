@@ -11,6 +11,12 @@ function ThemeContextProvider({ children }) {
   const appTheme = createTheme({
     palette: {
       mode: mode ? "dark" : "light",
+      primary: {
+        light: "#FFFFFF",
+        main: "#3586FF",
+        dark: "#14181D",
+        contrastText: "#1D2026",
+      },
     },
   });
 
