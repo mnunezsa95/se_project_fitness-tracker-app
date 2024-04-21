@@ -1,13 +1,11 @@
-import { Paper, Switch } from "@mui/material";
-import useDarkMode from "./hooks/useDarkMode";
+import { Paper } from "@mui/material";
+
+import DarkModeButton from "./components/DarkModeButton";
 
 function App() {
-  const { mode, toggleMode } = useDarkMode();
-
   return (
     <Paper elevation={0} sx={{ height: "100vh" }} square>
-      <h1>Dark Mode Tutorial</h1>
-      <Switch checked={mode} onChange={toggleMode} inputProps={{ "aria-label": "controlled" }} />
+      <DarkModeButton />
     </Paper>
   );
 }
