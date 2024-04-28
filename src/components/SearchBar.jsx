@@ -27,7 +27,6 @@ const SearchBar = () => {
           placeholder="Search..."
           variant="standard"
           size="small"
-          color="primary"
           sx={{
             input: {
               color: theme.palette.mode === "dark" ? "#3586FF" : "#FFFFFF",

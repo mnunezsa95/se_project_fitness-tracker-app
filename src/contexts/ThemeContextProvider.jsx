@@ -11,6 +11,7 @@ function ThemeContextProvider({ children }) {
   const lightPalette = {
     primary: {
       main: "#3586FF",
+      secondary: "#FFFFFF",
     },
     background: {
       default: "#FFFFFF",
@@ -25,6 +26,7 @@ function ThemeContextProvider({ children }) {
   const darkPalette = {
     primary: {
       main: "#3586FF",
+      secondary: "#FFFFFF",
     },
     background: {
       default: "#14181D",
