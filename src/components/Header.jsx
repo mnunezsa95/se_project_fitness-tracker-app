@@ -1,17 +1,18 @@
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
-import { IconButton } from "@mui/material";
 import DarkModeButton from "./DarkModeButton";
 import SearchBar from "./SearchBar";
+import CalendarButton from "./CalendarButton";
+import LoginButton from "./LoginButton";
+import NotificationsButton from "./NotificationButton";
 
 const Header = () => {
   return (
     <header>
       <div className="flex justify-end gap-x-3 ">
-        <IconButton>
-          <CalendarMonthOutlinedIcon></CalendarMonthOutlinedIcon>
-        </IconButton>
-        <DarkModeButton />
         <SearchBar />
+        <DarkModeButton />
+        <CalendarButton />
+        <NotificationsButton />
+        <LoginButton />
       </div>
     </header>
   );
