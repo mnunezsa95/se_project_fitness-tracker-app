@@ -8,15 +8,38 @@ function ThemeContextProvider({ children }) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [mode, setMode] = useState(prefersDarkMode);
 
+  const lightPalette = {
+    primary: {
+      main: "#3586FF",
+    },
+    background: {
+      default: "#FFFFFF",
+      paper: "#F5F5F5",
+    },
+    text: {
+      primary: "#3586FF",
+      secondary: "#3586FF",
+    },
+  };
+
+  const darkPalette = {
+    primary: {
+      main: "#3586FF",
+    },
+    background: {
+      default: "#14181D",
+      paper: "#14181D",
+    },
+    text: {
+      primary: "#FFFFFF",
+      secondary: "#CCCCCC",
+    },
+  };
+
   const appTheme = createTheme({
     palette: {
       mode: mode ? "dark" : "light",
-      primary: {
-        light: "#FFFFFF",
-        main: "#3586FF",
-        dark: "#14181D",
-        contrastText: "#1D2026",
-      },
+      ...(mode ? darkPalette : lightPalette),
     },
   });
 
