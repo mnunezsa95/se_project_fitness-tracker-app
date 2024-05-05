@@ -9,12 +9,16 @@ import CalendarButton from "./CalendarButton";
 import LoginButton from "./LoginButton";
 import NotificationsButton from "./NotificationButton";
 
-const NavBar = () => {
+import { validateToggleDrawer } from "../validation/propTypes";
+
+const NavBar = ({ toggleDrawer }) => {
+  NavBar.propTypes = validateToggleDrawer;
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" aria-label="menu">
+          <IconButton size="large" edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer("left", true)}>
             <MenuIcon />
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
