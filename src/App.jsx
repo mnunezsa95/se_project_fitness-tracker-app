@@ -1,33 +1,22 @@
-import { Paper, Switch } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useState } from "react";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { Paper } from "@mui/material";
+import Home from "./components/Home";
+import Profile from "./components/Profie";
+import Workouts from "./components/Workouts";
+import Statistics from "./components/Statistics";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [mode, setMode] = useState(prefersDarkMode);
-
-  const appTheme = createTheme({
-    palette: {
-      mode: mode ? "dark" : "light",
-    },
-  });
-
-  const handleChange = () => {
-    if (mode) {
-      setMode(false);
-    } else {
-      setMode(true);
-    }
-  };
-
   return (
-    <ThemeProvider theme={appTheme}>
-      <Paper elevation={0} sx={{ height: "100vh" }} square>
-        <h1>Dark Mode Tutorial</h1>
-        <Switch checked={mode} onChange={handleChange} inputProps={{ "aria-label": "controlled" }} />
-      </Paper>
-    </ThemeProvider>
+    <Paper elevation={0} sx={{ height: "100vh" }} square className="p-8">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/workouts" element={<Workouts />} />
+          <Route path="/statistics" element={<Statistics />} />
+        </Routes>
+      </BrowserRouter>
+    </Paper>
   );
 }
 
