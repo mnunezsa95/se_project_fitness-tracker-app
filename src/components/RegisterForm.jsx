@@ -32,7 +32,6 @@ const RegisterForm = () => {
       <form onSubmit={handleSubmit} className="pt-6 px-6">
         <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
           <TextField
-            id={firstName}
             type="text"
             variant="outlined"
             color="primary"
@@ -45,7 +44,6 @@ const RegisterForm = () => {
             size="large"
           />
           <TextField
-            id={lastName}
             type="text"
             variant="outlined"
             color="primary"
@@ -59,7 +57,6 @@ const RegisterForm = () => {
           />
         </Stack>
         <TextField
-          id={email}
           type="email"
           variant="outlined"
           color="primary"
@@ -72,7 +69,6 @@ const RegisterForm = () => {
           sx={sx}
         />
         <TextField
-          id={password}
           type="password"
           variant="outlined"
           color="primary"
@@ -85,7 +81,6 @@ const RegisterForm = () => {
           sx={sx}
         />
         <TextField
-          id={dateOfBirth}
           type="date"
           variant="outlined"
           color="primary"
@@ -104,9 +99,9 @@ const RegisterForm = () => {
         </div>
       </form>
       <div className="pl-6 pb-8">
-        <medium>
+        <small>
           Already have an account? <Link to="/login">Login Here</Link>
-        </medium>
+        </small>
       </div>
     </React.Fragment>
   );
