@@ -8,4 +8,10 @@ const validateThemeContext = {
   children: PropTypes.node.isRequired,
 };
 
-export { validateToggleDrawer, validateThemeContext };
+const validateModalComponent = {
+  openModal: PropTypes.bool.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
+  handleOpenModal: PropTypes.func,
+};
+
+export { validateToggleDrawer, validateThemeContext, validateModalComponent };

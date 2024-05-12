@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Mona-Sans-Regular";
-  src: url("../src/vendor/fonts/Mona-Sans-Regular.woff");
+  src: url("../src/vendor/fonts/Mona-Sans-Regular.woff") format("woff");
 }
 
 @font-face {

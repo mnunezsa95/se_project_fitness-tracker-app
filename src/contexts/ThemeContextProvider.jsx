@@ -44,6 +44,9 @@ function ThemeContextProvider({ children }) {
       mode: mode ? "dark" : "light",
       ...(mode ? darkPalette : lightPalette),
     },
+    typography: {
+      fontFamily: "Mona-Sans-Regular, Arial, sans-serif", // Set your default font family here
+    },
   });
 
   const value = { mode, toggleMode: () => setMode((prevMode) => !prevMode) };

@@ -8,7 +8,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { validateToggleDrawer } from "../validation/propTypes";
-
 import HomeIcon from "@mui/icons-material/Home";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
@@ -16,6 +15,7 @@ import AnalyticsIcon from "@mui/icons-material/Analytics";
 
 function Sidebar({ toggleDrawer, state }) {
   Sidebar.propTypes = validateToggleDrawer;
+
   const images = [HomeIcon, AccountBoxIcon, FitnessCenterIcon, AnalyticsIcon];
 
   const list = (anchor) => (
