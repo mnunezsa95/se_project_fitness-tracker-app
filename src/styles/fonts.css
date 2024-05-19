@@ -1,0 +1,5 @@
+@font-face {
+  font-family: "Mona-Sans";
+  src: url("../src/vendor/fonts/MonaSans-Regular.woff2") format("woff2"), url("../src/vendor/fonts/MonaSans-Medium.woff2") format("woff2"),
+    url("../src/vendor/fonts/MonaSans-Bold.woff2") format("woff2");
+}
