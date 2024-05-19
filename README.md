@@ -1,1 +1,2 @@
-# Fitness Tracker App (Frontend)
+# Fitness Tracker App: Frontend
+
