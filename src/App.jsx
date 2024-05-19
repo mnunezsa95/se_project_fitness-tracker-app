@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Workouts from "./components/Workouts";
 import Statistics from "./components/Statistics";
+import { Button } from "@material-tailwind/react";
 
 function App() {
   const [theme, setTheme] = useState(null);
@@ -27,7 +28,7 @@ function App() {
         {theme === "dark" ? "🌙" : "☀️"}
       </button>
       <h1 className="dark:bg-background">Hello</h1>
-
+      <Button color="blue">Click Me</Button>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
