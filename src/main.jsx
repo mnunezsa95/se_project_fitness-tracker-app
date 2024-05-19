@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import ThemeContextProvider from "./contexts/ThemeContextProvider.jsx";
-import "../src/global/default.css";
-import "../src/global/fonts.css";
+import "./styles/tailwind.css";
+import { ThemeProvider } from "@material-tailwind/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeContextProvider>
+    <ThemeProvider>
       <App />
-    </ThemeContextProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
