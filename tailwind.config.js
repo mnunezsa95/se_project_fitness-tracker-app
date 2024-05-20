@@ -1,10 +1,12 @@
-// eslint-disable-next-line no-undef
-const withMT = require("@material-tailwind/react/utils/withMT");
+import daisyui from "daisyui";
 
 /** @type {import('tailwindcss').Config} */
-export default withMT({
+export default {
   content: ["./index.html", "./src/**/*.{jsx, js, tsx, ts}"],
   darkMode: "class",
+  daisyui: {
+    themes: [],
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -26,5 +28,6 @@ export default withMT({
   scale: {
     2: "2.0",
   },
-  plugins: [],
-});
+  // eslint-disable-next-line no-undef
+  plugins: [daisyui],
+};

@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Workouts from "./components/Workouts";
 import Statistics from "./components/Statistics";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 function App() {
   const [theme, setTheme] = useState(null);
