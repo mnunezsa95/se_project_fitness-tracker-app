@@ -5,7 +5,7 @@ import Profile from "./components/Profile";
 import Workouts from "./components/Workouts";
 import Statistics from "./components/Statistics";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Button } from "@material-tailwind/react";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 function App() {
   const [theme, setTheme] = useState(null);
@@ -25,10 +25,9 @@ function App() {
   return (
     <>
       <button type="button" onClick={handleThemeSwitch}>
-        {theme === "dark" ? "🌙" : "☀️"}
+        {theme === "dark" ? <MoonIcon className="size-6" /> : <SunIcon className="size-6" />}
       </button>
       <h1 className="dark:bg-background text-4xl font-Mona-Sans">Statistics</h1>
-      <Button>Button</Button>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
