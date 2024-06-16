@@ -1,10 +1,10 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 
-const HamburgerButton = () => {
+const HamburgerButton = ({ toggleSideBar }) => {
   return (
-    <button>
+    <label htmlFor="my-drawer" aria-label="close sidebar" className="dark:bg-background" onClick={toggleSideBar}>
       <Bars3Icon className="size-10" />
-    </button>
+    </label>
   );
 };
 
