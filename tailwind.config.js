@@ -28,6 +28,5 @@ export default {
   scale: {
     2: "2.0",
   },
-  // eslint-disable-next-line no-undef
   plugins: [daisyui],
 };
