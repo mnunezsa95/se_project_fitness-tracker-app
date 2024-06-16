@@ -10,7 +10,7 @@ const DarkModeButton = () => {
 
   return (
     <button type="button" onClick={handleThemeSwitch}>
-      {theme === "dark" ? <MoonIcon className="size-6" /> : <SunIcon className="size-6" />}
+      {theme === "dark" ? <MoonIcon className="size-10" /> : <SunIcon className="size-10" />}
     </button>
   );
 };

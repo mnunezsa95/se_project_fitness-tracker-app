@@ -9,16 +9,16 @@ function App() {
   return (
     <>
       <ThemeProvider>
-        <h1 className="dark:bg-background text-4xl font-Mona-Sans">Statistics</h1>
-
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/workouts" element={<Workouts />} />
-            <Route path="/statistics" element={<Statistics />} />
-          </Routes>
-        </BrowserRouter>
+        <div className="pt-5 px-10">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/workouts" element={<Workouts />} />
+              <Route path="/statistics" element={<Statistics />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
       </ThemeProvider>
     </>
   );
