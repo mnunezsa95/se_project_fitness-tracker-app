@@ -1,13 +1,17 @@
 const SearchBar = () => {
   return (
-    <div className="flex flex-col input-primary max-w-screen-lg">
-      <label className="input input-bordered flex items-center gap-2">
-        <input type="text" className="grow" placeholder="Search" />
+    <div className="flex flex-col max-w-screen-lg">
+      <label className="flex items-center gap-1">
+        <input
+          type="text"
+          className="grow border-b-2 border-content placeholder:text-content placeholder:text-lg text-lg text-content outline-none"
+          placeholder="Search"
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
-          fill="currentColor"
-          className="w-8 h-8 opacity-70"
+          fill="#3B82F6"
+          className="w-8 h-8 opacity-100"
         >
           <path
             fillRule="evenodd"
