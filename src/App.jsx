@@ -7,20 +7,18 @@ import ThemeProvider from "./contexts/ThemeContextProvider.jsx";
 
 function App() {
   return (
-    <>
-      <ThemeProvider>
-        <div className="pt-5 px-10">
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/workouts" element={<Workouts />} />
-              <Route path="/statistics" element={<Statistics />} />
-            </Routes>
-          </BrowserRouter>
-        </div>
-      </ThemeProvider>
-    </>
+    <ThemeProvider>
+      <div className="dark:bg-background pt-5 px-10">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/workouts" element={<Workouts />} />
+            <Route path="/statistics" element={<Statistics />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 }
 

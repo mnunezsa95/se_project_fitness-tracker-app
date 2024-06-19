@@ -25,7 +25,7 @@ const SideBar = ({ isOpen, toggleSideBar }) => {
         <label
           htmlFor="my-drawer"
           aria-label="close sidebar"
-          className="bg-black w-full h-full absolute top-0 left-0 opacity-00"
+          className="dark:bg-background bg-content w-full h-full absolute top-0 left-0 opacity-00"
         >
           <div className="flex justify-end p-4">
             <button type="button" onClick={toggleSideBar}>

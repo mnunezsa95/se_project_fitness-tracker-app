@@ -3,6 +3,7 @@ import DarkModeButton from "./DarkModeButton";
 import CalendarButton from "./CalendarButton";
 import NotificationButton from "./NotificationButton";
 import HamburgerButton from "./HamburgerButton";
+import LoginButton from "./LoginButton";
 import SearchBar from "./SearchBar";
 import SideBar from "./SideBar";
 import PropTypes from "prop-types";
@@ -33,6 +34,7 @@ const NavBar = () => {
         <DarkModeButton />
         <CalendarButton />
         <NotificationButton />
+        <LoginButton />
         <SideBar isOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
       </div>
     </div>
