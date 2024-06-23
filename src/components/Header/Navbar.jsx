@@ -7,22 +7,33 @@ import LoginButton from "./LoginButton";
 import SearchBar from "./SearchBar";
 import SideBar from "./SideBar";
 import PropTypes from "prop-types";
+import LoginModal from "../Modal/LoginModal";
 
 const NavBar = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
 
   const toggleSideBar = useCallback(() => {
     setIsSideBarOpen((isSideBarOpen) => !isSideBarOpen);
   }, []);
 
   useEffect(() => {
-    if (!isSideBarOpen) return;
+    if (!isSideBarOpen && !isModalOpen) return;
     const handleEscClose = (evt) => {
-      if (evt.key === "Escape") toggleSideBar();
+      if (isSideBarOpen && evt.key === "Escape") toggleSideBar();
+      else if (isModalOpen && evt.key === "Escape") handleCloseModal();
     };
     document.addEventListener("keydown", handleEscClose);
-    return () => document.removeEventListener("keydown", handleEscClose);
-  }, [isSideBarOpen, toggleSideBar]);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [isSideBarOpen, isModalOpen, toggleSideBar, handleCloseModal]);
 
   return (
     <div className="flex items-center justify-between w-full">
@@ -34,15 +45,19 @@ const NavBar = () => {
         <DarkModeButton />
         <CalendarButton />
         <NotificationButton />
-        <LoginButton />
-        <SideBar isOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
+        <LoginButton handleOpenModal={handleOpenModal} />
+        <SideBar isSideBarOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
+        <LoginModal
+          isModalOpen={isModalOpen}
+          handleCloseModal={handleCloseModal}
+        />
       </div>
     </div>
   );
 };
 
 SideBar.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
+  isSideBarOpen: PropTypes.bool.isRequired,
   toggleSideBar: PropTypes.func.isRequired,
 };
 

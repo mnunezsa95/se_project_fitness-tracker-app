@@ -8,7 +8,7 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import PropTypes from "prop-types";
 import SideBarItem from "./SideBarItem";
 
-const SideBar = ({ isOpen, toggleSideBar }) => {
+const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
   const sideBarItems = [
     {
       title: "Home",
@@ -38,18 +38,18 @@ const SideBar = ({ isOpen, toggleSideBar }) => {
         id="my-drawer"
         type="checkbox"
         className="drawer-toggle"
-        checked={isOpen}
+        checked={isSideBarOpen}
         readOnly
       />
       <div
         className={`drawer-side text-white w-1/5 h-full fixed top-0 left-${
-          isOpen ? "0" : "-full"
+          isSideBarOpen ? "0" : "-full"
         } transform transition-transform duration-300 ease-in-out`}
       >
         <label
           htmlFor="my-drawer"
           aria-label="toggle sidebar"
-          className={`drawer-button ${isOpen ? "open" : ""}`}
+          className={`drawer-button ${isSideBarOpen ? "open" : ""}`}
           onClick={toggleSideBar}
         ></label>
         <label
@@ -75,7 +75,7 @@ const SideBar = ({ isOpen, toggleSideBar }) => {
 
 SideBar.propTypes = {
   toggleSideBar: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
+  isSideBarOpen: PropTypes.bool.isRequired,
 };
 
 export default SideBar;

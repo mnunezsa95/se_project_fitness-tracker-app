@@ -2,6 +2,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 
 const Modal = ({
+  isModalOpen,
   modalTitle,
   onSubmit,
   onClose,
@@ -10,6 +11,8 @@ const Modal = ({
   handleRedirect,
   children,
 }) => {
+  if (!isModalOpen) return null;
+
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg w-80 relative">
@@ -45,6 +48,7 @@ const Modal = ({
 };
 
 Modal.propTypes = {
+  isModalOpen: PropTypes.bool.isRequired,
   modalTitle: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
