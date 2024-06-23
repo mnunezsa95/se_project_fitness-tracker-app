@@ -38,17 +38,28 @@ const NavBar = () => {
   }, []);
 
   useEffect(() => {
-    if (!isSideBarOpen && !isLoginModalOpen) return;
+    if (!isSideBarOpen && !isLoginModalOpen && !isRegisterModalOpen) return;
     const handleEscClose = (evt) => {
       if (isSideBarOpen && evt.key === "Escape") toggleSideBar();
-      else if (isLoginModalOpen && evt.key === "Escape") handleCloseModal();
+      else if (
+        (isLoginModalOpen || isRegisterModalOpen) &&
+        evt.key === "Escape"
+      )
+        handleCloseModal();
+      else if (isRegisterModalOpen && evt.key === "Escape") h;
     };
     document.addEventListener("keydown", handleEscClose);
 
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, [isSideBarOpen, isLoginModalOpen, toggleSideBar, handleCloseModal]);
+  }, [
+    isSideBarOpen,
+    isLoginModalOpen,
+    isRegisterModalOpen,
+    toggleSideBar,
+    handleCloseModal,
+  ]);
 
   return (
     <div className="flex items-center justify-between w-full">

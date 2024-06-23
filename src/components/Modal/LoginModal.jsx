@@ -15,20 +15,22 @@ const LoginModal = ({ isLoginModalOpen, handleCloseModal, handleRedirect }) => {
       handleRedirect={handleRedirect}
     >
       <input
+        className="mb-6 pb-2 text-xl w-full dark:bg-backgroundAccent placeholder:text-xl placeholder:text-content text-content border-b-2 border-b-content outline-none border-opacity-60"
+        name="username"
         type="text"
         placeholder="Username"
         minLength="4"
         maxLength="16"
         required
-        className="mb-4 pb-2 text-lg w-full placeholder:text-content text-content border-b-2 border-b-content outline-none"
       />
       <input
+        className="mb-6 pb-2 text-xl w-full dark:bg-backgroundAccent placeholder:text-xl placeholder:text-content text-content border-b-2 border-b-content outline-none border-opacity-60"
+        name="password"
         type="password"
         placeholder="Password"
         minLength="6"
         maxLength="30"
         required
-        className="mb-4 pb-2 text-lg w-full placeholder:text-content text-content border-b-2 border-b-content outline-none"
       />
     </Modal>
   );

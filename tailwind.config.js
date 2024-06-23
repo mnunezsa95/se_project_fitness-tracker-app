@@ -14,6 +14,7 @@ export default {
       },
       colors: {
         background: "#14181D",
+        backgroundAccent: "#2B3239",
         content: "#3B82F6",
       },
     },

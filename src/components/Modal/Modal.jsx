@@ -15,26 +15,28 @@ const Modal = ({
 
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-80 relative">
+      <div className="dark:bg-backgroundAccent bg-white p-6 rounded-lg shadow-lg w-1/3 relative font-Mona-Sans">
         <button
-          className="absolute top-2 right-2"
+          className="absolute top-4 right-4"
           onClick={onClose}
           aria-label="Close modal"
         >
           <XMarkIcon className="size-8 text-content" />
         </button>
-        <h2 className="text-3xl text-content mb-8">{modalTitle}</h2>
+        <h2 className="text-3xl font-Mona-Sans text-content mb-8">
+          {modalTitle}
+        </h2>
         <form onSubmit={onSubmit}>
           {children}
           <button
             type="submit"
-            className="mt-4 w-full bg-content text-white py-2 rounded hover:bg-content hover:opacity-70"
+            className="mt-4 w-full bg-content font-Mona-Sans text-xl text-black-800 py-2 rounded hover:bg-content hover:opacity-70"
           >
             {modalTitle}
           </button>
           {hasRedirectButton && (
             <button
-              className="mt-4 text-md text-content text-opacity-80"
+              className="mt-4 text-lg font-Mona-Sans text-content"
               onClick={handleRedirect}
               type="button"
             >
