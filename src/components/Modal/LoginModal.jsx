@@ -1,14 +1,13 @@
 import Modal from "./Modal";
 import PropTypes from "prop-types";
 
-const LoginModal = ({ isModalOpen, handleCloseModal }) => {
+const LoginModal = ({ isLoginModalOpen, handleCloseModal, handleRedirect }) => {
   const handleLoginSubmit = () => {};
-  const handleRedirect = () => {};
 
   return (
     <Modal
       modalTitle="Login"
-      isModalOpen={isModalOpen}
+      isModalOpen={isLoginModalOpen}
       onSubmit={handleLoginSubmit}
       onClose={handleCloseModal}
       hasRedirectButton={true}
@@ -18,11 +17,17 @@ const LoginModal = ({ isModalOpen, handleCloseModal }) => {
       <input
         type="text"
         placeholder="Username"
+        minLength="4"
+        maxLength="16"
+        required
         className="mb-4 pb-2 text-lg w-full placeholder:text-content text-content border-b-2 border-b-content outline-none"
       />
       <input
         type="password"
         placeholder="Password"
+        minLength="6"
+        maxLength="30"
+        required
         className="mb-4 pb-2 text-lg w-full placeholder:text-content text-content border-b-2 border-b-content outline-none"
       />
     </Modal>
@@ -30,8 +35,9 @@ const LoginModal = ({ isModalOpen, handleCloseModal }) => {
 };
 
 LoginModal.propTypes = {
-  isModalOpen: PropTypes.bool.isRequired,
+  isLoginModalOpen: PropTypes.bool.isRequired,
   handleCloseModal: PropTypes.func.isRequired,
+  handleRedirect: PropTypes.func.isRequired,
 };
 
 export default LoginModal;
