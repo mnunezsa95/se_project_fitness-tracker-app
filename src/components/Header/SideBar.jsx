@@ -1,7 +1,37 @@
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  XMarkIcon,
+  HomeIcon,
+  ChartBarIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import PropTypes from "prop-types";
+import SideBarItem from "./SideBarItem";
 
 const SideBar = ({ isOpen, toggleSideBar }) => {
+  const sideBarItems = [
+    {
+      title: "Home",
+      link: "/",
+      image: HomeIcon,
+    },
+    {
+      title: "Profile",
+      link: "/profile",
+      image: UserCircleIcon,
+    },
+    {
+      title: "Workouts",
+      link: "/workouts",
+      image: FitnessCenterIcon,
+    },
+    {
+      title: "Statistics",
+      link: "/statistics",
+      image: ChartBarIcon,
+    },
+  ];
+
   return (
     <div className="drawer">
       <input
@@ -29,21 +59,15 @@ const SideBar = ({ isOpen, toggleSideBar }) => {
         >
           <div className="flex justify-end p-4">
             <button type="button" onClick={toggleSideBar}>
-              <XMarkIcon className="size-8 text-white" />
+              <XMarkIcon className="size-8 text-white dark:text-content" />
             </button>
           </div>
+          <div className="flex flex-col items-start pl-4">
+            {sideBarItems.map((item, i) => (
+              <SideBarItem item={item} key={i} />
+            ))}
+          </div>
         </label>
-
-        <div className="p-4">
-          <ul className="menu">
-            <li>
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">Sidebar Item 2</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   );
@@ -51,7 +75,7 @@ const SideBar = ({ isOpen, toggleSideBar }) => {
 
 SideBar.propTypes = {
   toggleSideBar: PropTypes.func.isRequired,
-  isOpen: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
 };
 
 export default SideBar;
