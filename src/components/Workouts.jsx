@@ -5,8 +5,11 @@ import ExerciseSubtitle from "./Workouts/ExerciseSubtitle";
 import Divider from "./General/Divider";
 import ExerciseSearchbar from "./Workouts/ExerciseSearchbar";
 import ExerciseCarousel from "./Workouts/ExerciseCarousel";
+import { useState } from "react";
 
 const Workouts = () => {
+  const [bodyPart, setBodyPart] = useState("all");
+
   return (
     <>
       <Header />
@@ -16,8 +19,8 @@ const Workouts = () => {
         <ExerciseSearchbar />
       </div>
       <Divider />
+      <ExerciseCarousel bodyPart={bodyPart} setBodyPart={setBodyPart} />
       <ExerciseLibrary />
-      <ExerciseCarousel />
     </>
   );
 };

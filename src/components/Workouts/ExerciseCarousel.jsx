@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+
 import { bodyPartsURL, exerciseOptions, fetchData } from "../utils/fetchData";
 import ExerciseBodyPartCard from "./ExerciseBodyPartCard";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
@@ -28,7 +30,7 @@ import {
   allImageDark,
 } from "../utils/constants";
 
-const ExerciseCarousel = () => {
+const ExerciseCarousel = ({ bodyPart, setBodyPart }) => {
   const { theme } = useTheme();
   const [bodyParts, setBodyParts] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
@@ -50,7 +52,7 @@ const ExerciseCarousel = () => {
   useEffect(() => {
     const fetchExerciseData = async () => {
       const bodyPartsData = await fetchData(bodyPartsURL, exerciseOptions);
-      setBodyParts(["all", ...bodyPartsData].sort((a, b) => a - b));
+      setBodyParts(["all", ...bodyPartsData].sort());
     };
 
     fetchExerciseData();
@@ -58,37 +60,44 @@ const ExerciseCarousel = () => {
 
   const nextSlide = () => {
     if (startIndex < bodyParts.length - 3) {
-      setStartIndex(startIndex + 1);
+      setStartIndex(startIndex + 3);
     }
   };
 
   const prevSlide = () => {
     if (startIndex > 0) {
-      setStartIndex(startIndex - 1);
+      setStartIndex(startIndex - 3);
     }
   };
 
   return (
     <div className="flex flex-col">
       <div className="flex justify-center pt-20 pb-10 gap-x-60">
-        {bodyParts.slice(startIndex, startIndex + 3).map((bodyPart, index) => (
+        {bodyParts.slice(startIndex, startIndex + 3).map((part) => (
           <ExerciseBodyPartCard
-            key={startIndex + index}
-            bodyPartName={bodyPart}
-            bodyPartImage={bodyPartImages[bodyPart]}
+            key={part}
+            bodyPartName={part}
+            bodyPartImage={bodyPartImages[part]}
+            bodyPart={bodyPart}
+            setBodyPart={setBodyPart}
           />
         ))}
       </div>
       <div className="flex justify-end pt-2">
         <button className="px-4 py-2" onClick={prevSlide}>
-          <ArrowLeftIcon className=" text-content size-6" />
+          <ArrowLeftIcon className="text-content size-6" />
         </button>
         <button className="px-4 py-2" onClick={nextSlide}>
-          <ArrowRightIcon className=" text-content size-6" />
+          <ArrowRightIcon className="text-content size-6" />
         </button>
       </div>
     </div>
   );
+};
+
+ExerciseCarousel.propTypes = {
+  bodyPart: PropTypes.string.isRequired,
+  setBodyPart: PropTypes.func,
 };
 
 export default ExerciseCarousel;
