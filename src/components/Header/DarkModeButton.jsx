@@ -3,9 +3,10 @@ import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 const DarkModeButton = () => {
   const { theme, setTheme } = useTheme();
-
   const handleThemeSwitch = () => {
-    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("themeColor", newTheme);
   };
 
   return (
