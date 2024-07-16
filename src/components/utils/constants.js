@@ -16,8 +16,10 @@ import waistImage from "../../images/waist.svg";
 import waistImageDark from "../../images/waist-dark.svg";
 import neckImage from "../../images/neck.svg";
 import neckImageDark from "../../images/neck-dark.svg";
-import cardio from "../../images/cardio.svg";
-import cardioDark from "../../images/cardio-dark.svg";
+import cardioImage from "../../images/cardio.svg";
+import cardioImageDark from "../../images/cardio-dark.svg";
+import allImage from "../../images/all.svg";
+import allImageDark from "../../images/all-dark.svg";
 
 export {
   chestImage,
@@ -38,6 +40,8 @@ export {
   waistImageDark,
   neckImage,
   neckImageDark,
-  cardio,
-  cardioDark,
+  cardioImage,
+  cardioImageDark,
+  allImage,
+  allImageDark,
 };

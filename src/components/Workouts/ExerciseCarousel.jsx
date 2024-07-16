@@ -22,8 +22,10 @@ import {
   waistImageDark,
   neckImage,
   neckImageDark,
-  cardio,
-  cardioDark,
+  cardioImage,
+  cardioImageDark,
+  allImage,
+  allImageDark,
 } from "../utils/constants";
 
 const ExerciseCarousel = () => {
@@ -32,9 +34,9 @@ const ExerciseCarousel = () => {
   const [startIndex, setStartIndex] = useState(0);
 
   const bodyPartImages = {
-    all: "all",
+    all: theme === "light" ? allImage : allImageDark,
     back: theme === "light" ? backImage : backImageDark,
-    cardio: theme === "light" ? cardio : cardioDark,
+    cardio: theme === "light" ? cardioImage : cardioImageDark,
     chest: theme === "light" ? chestImage : chestImageDark,
     "lower arms": theme === "light" ? lowerArmsImage : lowerArmsImageDark,
     "lower legs": theme === "light" ? lowerLegsImage : lowerLegsImageDark,
