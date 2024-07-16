@@ -4,7 +4,7 @@ const ExerciseBodyPartCard = ({ bodyPartName, bodyPartImage }) => {
   return (
     <div className="flex flex-col items-center gap-y-5">
       <img
-        className="text-center w-40"
+        className="text-center w-40 min-h-[128px]"
         src={bodyPartImage}
         alt={bodyPartName}
       />
