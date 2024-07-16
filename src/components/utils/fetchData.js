@@ -1,3 +1,6 @@
+export const exercisesURL = "https://exercisedb.p.rapidapi.com/exercises";
+export const bodyPartsURL = "https://exercisedb.p.rapidapi.com/exercises/bodyPartList";
+
 export const exerciseOptions = {
   method: "GET",
   headers: {

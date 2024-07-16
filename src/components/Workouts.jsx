@@ -4,6 +4,7 @@ import ExerciseTitle from "./Workouts/ExerciseTitle";
 import ExerciseSubtitle from "./Workouts/ExerciseSubtitle";
 import Divider from "./General/Divider";
 import ExerciseSearchbar from "./Workouts/ExerciseSearchbar";
+import ExerciseCarousel from "./Workouts/ExerciseCarousel";
 
 const Workouts = () => {
   return (
@@ -16,6 +17,7 @@ const Workouts = () => {
       </div>
       <Divider />
       <ExerciseLibrary />
+      <ExerciseCarousel />
     </>
   );
 };
