@@ -1,18 +1,24 @@
 import PropTypes from "prop-types";
+import { formatWords } from "../utils/functions";
 
 const ExerciseCard = ({ exercise }) => {
   return (
-    <div className="">
+    <div className="mx-auto">
       <img
         src={exercise?.gifUrl}
         alt={exercise?.name}
-        className="w-full h-48 object-cover rounded-lg"
+        className="rounded-2xl"
       />
       <div className="mt-4">
-        <h3 className="text-xl font-semibold">{exercise?.name}</h3>
-        <p className="text-gray-600">Target: {exercise?.target}</p>
-        <p className="text-gray-600">Equipment: {exercise?.equipment}</p>
-        <p className="text-gray-600">Body Part: {exercise?.bodyPart}</p>
+        <h3 className="text-2xl font-semibold text-content font-Mona-Sans ">
+          {formatWords(exercise?.name)}
+        </h3>
+        <p className="text-content text-lg">
+          Target: {formatWords(exercise?.target)}
+        </p>
+        <p className="text-content text-lg">
+          Equipment: {formatWords(exercise?.equipment)}
+        </p>
       </div>
     </div>
   );
