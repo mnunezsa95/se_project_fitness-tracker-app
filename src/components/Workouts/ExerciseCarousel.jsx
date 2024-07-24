@@ -72,7 +72,7 @@ const ExerciseCarousel = ({ bodyPart, setBodyPart }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-center pt-20 pb-10 gap-x-60">
+      <div className="flex justify-center items-center pt-20 pb-10 gap-x-60 max-h-[250px]">
         {bodyParts.slice(startIndex, startIndex + 3).map((part) => (
           <ExerciseBodyPartCard
             key={part}
