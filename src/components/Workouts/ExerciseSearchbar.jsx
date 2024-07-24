@@ -1,15 +1,25 @@
-import { useState } from "react";
-import { exercisesURL, exerciseOptions, fetchData } from "../utils/fetchData";
+import { useState, useEffect } from "react";
+import {
+  exercisesURL,
+  exerciseOptions,
+  fetchData,
+  limitParam,
+} from "../utils/fetchData";
+import PropTypes from "prop-types";
 
-const ExerciseSearchbar = () => {
+const ExerciseSearchbar = ({ exercises, setExercises }) => {
   const [search, setSearch] = useState("");
-  const [exercises, setExercises] = useState([]);
+
   const handleSearchChange = (e) => setSearch(e.target.value.toLowerCase());
 
   const handleSearch = async (e) => {
     e.preventDefault();
     if (search) {
-      const exercisesData = await fetchData(exercisesURL, exerciseOptions);
+      const exercisesData = await fetchData(
+        `${exercisesURL}?limit=${limitParam}`,
+        exerciseOptions
+      );
+
       const searchedExercises = exercisesData.filter((exercise) => {
         return (
           exercise.name.toLowerCase().includes(search) ||
@@ -18,10 +28,15 @@ const ExerciseSearchbar = () => {
           exercise.bodyPart.toLowerCase().includes(search)
         );
       });
+
       setExercises(searchedExercises);
     }
     setSearch("");
   };
+
+  useEffect(() => {
+    console.log(exercises);
+  }, [exercises]);
 
   return (
     <form className="flex items-center space-x-2">
@@ -41,6 +56,11 @@ const ExerciseSearchbar = () => {
       </button>
     </form>
   );
+};
+
+ExerciseSearchbar.propTypes = {
+  exercises: PropTypes.array.isRequired,
+  setExercises: PropTypes.func.isRequired,
 };
 
 export default ExerciseSearchbar;

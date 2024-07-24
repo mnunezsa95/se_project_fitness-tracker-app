@@ -9,6 +9,7 @@ import { useState } from "react";
 
 const Workouts = () => {
   const [bodyPart, setBodyPart] = useState("all");
+  const [exercises, setExercises] = useState([]);
 
   return (
     <>
@@ -16,11 +17,16 @@ const Workouts = () => {
       <ExerciseTitle />
       <div className="flex items-center justify-between pt-5">
         <ExerciseSubtitle />
-        <ExerciseSearchbar />
+        <ExerciseSearchbar exercises={exercises} setExercises={setExercises} />
       </div>
       <Divider />
       <ExerciseCarousel bodyPart={bodyPart} setBodyPart={setBodyPart} />
-      <ExerciseLibrary />
+      <Divider />
+      <ExerciseLibrary
+        exercises={exercises}
+        setExercises={setExercises}
+        bodyPart={bodyPart}
+      />
     </>
   );
 };
