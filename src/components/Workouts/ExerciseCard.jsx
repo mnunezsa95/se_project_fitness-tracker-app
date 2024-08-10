@@ -3,14 +3,21 @@ import { formatWords } from "../utils/functions";
 
 const ExerciseCard = ({ exercise }) => {
   return (
-    <div className="mx-auto">
+    <div className="mx-auto w-full max-w-xs">
       <img
         src={exercise?.gifUrl}
         alt={exercise?.name}
-        className="rounded-2xl"
+        className="rounded-2xl w-full"
       />
       <div className="mt-4">
-        <h3 className="text-2xl font-semibold text-content font-Mona-Sans ">
+        <h3
+          className="text-2xl font-semibold text-content font-Mona-Sans text-wrap"
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {formatWords(exercise?.name)}
         </h3>
         <p className="text-content text-lg">
