@@ -16,15 +16,15 @@ export const formatWords = (sentence) => {
     .join(" ");
 };
 
-export const useEscapeKeyHandler = (isSideBarOpen, isLoginModalOpen, isRegisterModalOpen, toggleSideBar, handleCloseModal) => {
+export const useEscapeKeyHandler = (modals) => {
   useEffect(() => {
-    if (!isSideBarOpen && !isLoginModalOpen && !isRegisterModalOpen) return;
-
     const handleEscClose = (evt) => {
-      if (isSideBarOpen && evt.key === "Escape") {
-        toggleSideBar();
-      } else if ((isLoginModalOpen || isRegisterModalOpen) && evt.key === "Escape") {
-        handleCloseModal();
+      if (evt.key === "Escape") {
+        Object.keys(modals).forEach((modalKey) => {
+          if (modals[modalKey].isOpen) {
+            modals[modalKey].handleCloseModal();
+          }
+        });
       }
     };
 
@@ -33,5 +33,5 @@ export const useEscapeKeyHandler = (isSideBarOpen, isLoginModalOpen, isRegisterM
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, [isSideBarOpen, isLoginModalOpen, isRegisterModalOpen, toggleSideBar, handleCloseModal]);
+  }, [modals]);
 };

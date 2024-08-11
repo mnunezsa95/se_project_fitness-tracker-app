@@ -35,16 +35,23 @@ const NavBar = () => {
   };
 
   const toggleSideBar = useCallback(() => {
-    setIsSideBarOpen((isSideBarOpen) => !isSideBarOpen);
+    setIsSideBarOpen((prev) => !prev);
   }, []);
 
-  useEscapeKeyHandler(
-    isSideBarOpen,
-    isLoginModalOpen,
-    isRegisterModalOpen,
-    toggleSideBar,
-    handleCloseModal
-  );
+  useEscapeKeyHandler({
+    sideBar: {
+      isOpen: isSideBarOpen,
+      handleCloseModal: toggleSideBar,
+    },
+    loginModal: {
+      isOpen: isLoginModalOpen,
+      handleCloseModal,
+    },
+    registerModal: {
+      isOpen: isRegisterModalOpen,
+      handleCloseModal,
+    },
+  });
 
   return (
     <div className="flex items-center justify-between w-full">

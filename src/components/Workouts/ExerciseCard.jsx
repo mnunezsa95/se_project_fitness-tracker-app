@@ -3,6 +3,7 @@ import ExerciseMuscleTag from "./ExerciseMuscleTag";
 import { formatWords } from "../utils/functions";
 import { useState } from "react";
 import ExerciseModal from "./ExerciseModal";
+import { useEscapeKeyHandler } from "../utils/functions";
 
 const ExerciseCard = ({ exercise }) => {
   const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
@@ -10,6 +11,13 @@ const ExerciseCard = ({ exercise }) => {
 
   const handleOpenModal = () => setIsExerciseModalOpen(true);
   const handleCloseModal = () => setIsExerciseModalOpen(false);
+
+  useEscapeKeyHandler({
+    exerciseModal: {
+      isOpen: isExerciseModalOpen,
+      handleCloseModal,
+    },
+  });
 
   return (
     <div className="mx-auto w-full max-w-xs">
