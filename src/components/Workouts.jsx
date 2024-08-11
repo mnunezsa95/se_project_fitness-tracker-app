@@ -8,7 +8,7 @@ import ExerciseSearchbar from "./Workouts/ExerciseSearchbar";
 import ExerciseCarousel from "./Workouts/ExerciseCarousel";
 
 const Workouts = () => {
-  const [bodyPart, setBodyPart] = useState("all");
+  const [bodyPart, setBodyPart] = useState("");
   const [exercises, setExercises] = useState([]);
 
   return (
