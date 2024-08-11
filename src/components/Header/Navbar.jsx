@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import DarkModeButton from "./DarkModeButton";
 import CalendarButton from "./CalendarButton";
 import NotificationButton from "./NotificationButton";
@@ -9,6 +9,7 @@ import SideBar from "./SideBar";
 import PropTypes from "prop-types";
 import LoginModal from "../Modal/LoginModal";
 import RegisterModal from "../Modal/RegisterModal";
+import { useEscapeKeyHandler } from "../utils/functions";
 
 const NavBar = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -37,29 +38,13 @@ const NavBar = () => {
     setIsSideBarOpen((isSideBarOpen) => !isSideBarOpen);
   }, []);
 
-  useEffect(() => {
-    if (!isSideBarOpen && !isLoginModalOpen && !isRegisterModalOpen) return;
-    const handleEscClose = (evt) => {
-      if (isSideBarOpen && evt.key === "Escape") toggleSideBar();
-      else if (
-        (isLoginModalOpen || isRegisterModalOpen) &&
-        evt.key === "Escape"
-      )
-        handleCloseModal();
-      else if (isRegisterModalOpen && evt.key === "Escape") h;
-    };
-    document.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
-  }, [
+  useEscapeKeyHandler(
     isSideBarOpen,
     isLoginModalOpen,
     isRegisterModalOpen,
     toggleSideBar,
-    handleCloseModal,
-  ]);
+    handleCloseModal
+  );
 
   return (
     <div className="flex items-center justify-between w-full">

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export const formatWords = (sentence) => {
   if (!sentence) return "";
 
@@ -12,4 +14,24 @@ export const formatWords = (sentence) => {
       return word.toLowerCase();
     })
     .join(" ");
+};
+
+export const useEscapeKeyHandler = (isSideBarOpen, isLoginModalOpen, isRegisterModalOpen, toggleSideBar, handleCloseModal) => {
+  useEffect(() => {
+    if (!isSideBarOpen && !isLoginModalOpen && !isRegisterModalOpen) return;
+
+    const handleEscClose = (evt) => {
+      if (isSideBarOpen && evt.key === "Escape") {
+        toggleSideBar();
+      } else if ((isLoginModalOpen || isRegisterModalOpen) && evt.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [isSideBarOpen, isLoginModalOpen, isRegisterModalOpen, toggleSideBar, handleCloseModal]);
 };

@@ -1,13 +1,19 @@
 import PropTypes from "prop-types";
 import ExerciseMuscleTag from "./ExerciseMuscleTag";
 import { formatWords } from "../utils/functions";
+import { useState } from "react";
+import ExerciseModal from "./ExerciseModal";
 
 const ExerciseCard = ({ exercise }) => {
+  const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
   const muscleGroups = [...exercise.secondaryMuscles].slice(0, 4);
+
+  const handleOpenModal = () => setIsExerciseModalOpen(true);
+  const handleCloseModal = () => setIsExerciseModalOpen(false);
 
   return (
     <div className="mx-auto w-full max-w-xs">
-      <button type="button">
+      <button type="button" onClick={handleOpenModal}>
         <img
           src={exercise?.gifUrl}
           alt={exercise?.name}
@@ -37,6 +43,11 @@ const ExerciseCard = ({ exercise }) => {
           Equipment: {formatWords(exercise?.equipment)}
         </p>
       </div>
+      <ExerciseModal
+        isOpen={isExerciseModalOpen}
+        onClose={handleCloseModal}
+        exercise={exercise} // Pass the exercise prop
+      />
     </div>
   );
 };
@@ -48,7 +59,7 @@ ExerciseCard.propTypes = {
     equipment: PropTypes.string.isRequired,
     bodyPart: PropTypes.string.isRequired,
     gifUrl: PropTypes.string.isRequired,
-    secondaryMuscles: PropTypes.arrayOf(PropTypes.string), // Ensure secondaryMuscles is properly defined
+    secondaryMuscles: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 
