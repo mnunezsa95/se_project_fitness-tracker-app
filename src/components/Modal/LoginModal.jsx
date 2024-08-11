@@ -1,12 +1,18 @@
 import Modal from "./Modal";
 import PropTypes from "prop-types";
 
-const LoginModal = ({ isLoginModalOpen, handleCloseModal, handleRedirect }) => {
+const LoginModal = ({
+  isLoginModalOpen,
+  handleCloseModal,
+  handleRedirect,
+  modalRef,
+}) => {
   const handleLoginSubmit = () => {};
 
   return (
     <Modal
       modalTitle="Login"
+      modalRef={modalRef}
       isModalOpen={isLoginModalOpen}
       onSubmit={handleLoginSubmit}
       onClose={handleCloseModal}
@@ -40,6 +46,9 @@ LoginModal.propTypes = {
   isLoginModalOpen: PropTypes.bool.isRequired,
   handleCloseModal: PropTypes.func.isRequired,
   handleRedirect: PropTypes.func.isRequired,
+  modalRef: PropTypes.shape({
+    current: PropTypes.instanceOf(Element),
+  }).isRequired,
 };
 
 export default LoginModal;

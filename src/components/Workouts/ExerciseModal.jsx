@@ -2,14 +2,17 @@ import PropTypes from "prop-types";
 import { formatWords } from "../utils/functions";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-const ExerciseModal = ({ isOpen, onClose, exercise }) => {
+const ExerciseModal = ({ isOpen, onClose, exercise, modalRef }) => {
   if (!isOpen) return null;
 
   const exerciseInstructions = exercise?.instructions || [];
 
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-80 flex justify-center items-center z-30">
-      <div className="dark:bg-backgroundAccent bg-white p-6 rounded-lg shadow-lg max-w-screen-sm w-full relative z-40 font-Mona-Sans">
+      <div
+        ref={modalRef}
+        className="dark:bg-backgroundAccent bg-white p-6 rounded-lg shadow-lg max-w-screen-sm w-full relative z-40 font-Mona-Sans"
+      >
         <button
           className="absolute top-4 right-4"
           onClick={onClose}
@@ -50,6 +53,9 @@ ExerciseModal.propTypes = {
     name: PropTypes.string.isRequired,
     gifUrl: PropTypes.string.isRequired,
     instructions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+  modalRef: PropTypes.shape({
+    current: PropTypes.instanceOf(Element),
   }).isRequired,
 };
 

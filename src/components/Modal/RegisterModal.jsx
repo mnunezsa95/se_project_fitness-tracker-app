@@ -5,12 +5,14 @@ const RegisterModal = ({
   isRegisterModalOpen,
   handleCloseModal,
   handleRedirect,
+  modalRef,
 }) => {
   const handleRegisterSubmit = () => {};
 
   return (
     <Modal
       modalTitle="Register"
+      modalRef={modalRef}
       isModalOpen={isRegisterModalOpen}
       onSubmit={handleRegisterSubmit}
       onClose={handleCloseModal}
@@ -78,6 +80,9 @@ RegisterModal.propTypes = {
   isRegisterModalOpen: PropTypes.bool.isRequired,
   handleCloseModal: PropTypes.func.isRequired,
   handleRedirect: PropTypes.func.isRequired,
+  modalRef: PropTypes.shape({
+    current: PropTypes.instanceOf(Element),
+  }).isRequired,
 };
 
 export default RegisterModal;

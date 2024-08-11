@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const Modal = ({
   isModalOpen,
+  modalRef,
   modalTitle,
   onSubmit,
   onClose,
@@ -15,7 +16,10 @@ const Modal = ({
 
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-30">
-      <div className="dark:bg-backgroundAccent bg-white p-6 rounded-lg shadow-lg w-1/3 relative z-40 font-Mona-Sans">
+      <div
+        ref={modalRef}
+        className="dark:bg-backgroundAccent bg-white p-6 rounded-lg shadow-lg w-1/3 relative z-40 font-Mona-Sans"
+      >
         <button
           className="absolute top-4 right-4"
           onClick={onClose}
@@ -51,6 +55,9 @@ const Modal = ({
 
 Modal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
+  modalRef: PropTypes.shape({
+    current: PropTypes.instanceOf(Element),
+  }).isRequired,
   modalTitle: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,

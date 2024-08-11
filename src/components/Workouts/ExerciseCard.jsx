@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import ExerciseMuscleTag from "./ExerciseMuscleTag";
 import { formatWords } from "../utils/functions";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ExerciseModal from "./ExerciseModal";
 import { useEscapeKeyHandler } from "../utils/functions";
 
 const ExerciseCard = ({ exercise }) => {
   const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
+  const modalRef = useRef(null);
+
   const muscleGroups = [...exercise.secondaryMuscles].slice(0, 4);
 
   const handleOpenModal = () => setIsExerciseModalOpen(true);
@@ -16,6 +18,7 @@ const ExerciseCard = ({ exercise }) => {
     exerciseModal: {
       isOpen: isExerciseModalOpen,
       handleCloseModal,
+      modalRef,
     },
   });
 
@@ -54,7 +57,8 @@ const ExerciseCard = ({ exercise }) => {
       <ExerciseModal
         isOpen={isExerciseModalOpen}
         onClose={handleCloseModal}
-        exercise={exercise} // Pass the exercise prop
+        exercise={exercise}
+        modalRef={modalRef}
       />
     </div>
   );

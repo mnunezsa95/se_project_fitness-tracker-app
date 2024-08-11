@@ -28,10 +28,21 @@ export const useEscapeKeyHandler = (modals) => {
       }
     };
 
+    const handleClickOutside = (evt) => {
+      Object.keys(modals).forEach((modalKey) => {
+        const modalElement = modals[modalKey].modalRef?.current;
+        if (modals[modalKey].isOpen && modalElement && !modalElement.contains(evt.target)) {
+          modals[modalKey].handleCloseModal();
+        }
+      });
+    };
+
     document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       document.removeEventListener("keydown", handleEscClose);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [modals]);
 };

@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import DarkModeButton from "./DarkModeButton";
 import CalendarButton from "./CalendarButton";
 import NotificationButton from "./NotificationButton";
@@ -15,6 +15,7 @@ const NavBar = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const modalRef = useRef(null);
 
   const handleOpenLoginModal = () => setIsLoginModalOpen(true);
   const handleOpenRegisterModal = () => setIsRegisterModalOpen(true);
@@ -42,14 +43,17 @@ const NavBar = () => {
     sideBar: {
       isOpen: isSideBarOpen,
       handleCloseModal: toggleSideBar,
+      modalRef,
     },
     loginModal: {
       isOpen: isLoginModalOpen,
       handleCloseModal,
+      modalRef,
     },
     registerModal: {
       isOpen: isRegisterModalOpen,
       handleCloseModal,
+      modalRef,
     },
   });
 
@@ -69,11 +73,13 @@ const NavBar = () => {
           isLoginModalOpen={isLoginModalOpen}
           handleCloseModal={handleCloseModal}
           handleRedirect={handleRedirect}
+          modalRef={modalRef}
         />
         <RegisterModal
           isRegisterModalOpen={isRegisterModalOpen}
           handleCloseModal={handleCloseModal}
           handleRedirect={handleRedirect}
+          modalRef={modalRef}
         />
       </div>
     </div>
