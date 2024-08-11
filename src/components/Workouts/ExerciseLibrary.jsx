@@ -1,12 +1,38 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExerciseCard from "./ExerciseCard";
 import ExercisePagination from "./ExercisePagination";
+import {
+  exercisesURL,
+  exerciseOptions,
+  fetchData,
+  limitParam,
+} from "../utils/fetchData";
 
-const ExerciseLibrary = ({ exercises }) => {
+const ExerciseLibrary = ({ exercises, setExercises, bodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const exercisesPerPage = 9;
   const totalPages = Math.ceil(exercises.length / exercisesPerPage);
+
+  useEffect(() => {
+    const fetchExerciseData = async () => {
+      let exerciseData = [];
+
+      if (bodyPart === "all") {
+        exerciseData = await fetchData(
+          `${exercisesURL}?limit=${limitParam}`,
+          exerciseOptions
+        );
+      } else {
+        exerciseData = await fetchData(
+          `${exercisesURL}/bodyPart/${bodyPart}?limit=${limitParam}`,
+          exerciseOptions
+        );
+      }
+      setExercises(exerciseData);
+    };
+    fetchExerciseData();
+  }, [bodyPart]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -37,6 +63,8 @@ const ExerciseLibrary = ({ exercises }) => {
 
 ExerciseLibrary.propTypes = {
   exercises: PropTypes.array.isRequired,
+  setExercises: PropTypes.func.isRequired,
+  bodyPart: PropTypes.string.isRequired,
 };
 
 export default ExerciseLibrary;
