@@ -8,7 +8,7 @@ import ThemeProvider from "./contexts/ThemeContextProvider.jsx";
 function App() {
   return (
     <ThemeProvider>
-      <div className="dark:bg-background pt-5 px-10">
+      <div className="dark:bg-background min-h-screen w-full pt-5 px-10">
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

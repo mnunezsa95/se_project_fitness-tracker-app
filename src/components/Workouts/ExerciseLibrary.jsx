@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import ExerciseCard from "./ExerciseCard";
-import Pagination from "./ExercisePagination";
+import ExercisePagination from "./ExercisePagination";
 
 const ExerciseLibrary = ({ exercises }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +25,7 @@ const ExerciseLibrary = ({ exercises }) => {
         ))}
       </div>
       {exercises.length >= 9 ? (
-        <Pagination
+        <ExercisePagination
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
