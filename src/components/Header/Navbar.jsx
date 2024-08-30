@@ -58,7 +58,7 @@ const NavBar = () => {
   });
 
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="flex items-center justify-between w-full relative z-10">
       <div className="flex items-center justify-start">
         <HamburgerButton toggleSideBar={toggleSideBar} />
       </div>
