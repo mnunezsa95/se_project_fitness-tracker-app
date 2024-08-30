@@ -11,7 +11,7 @@ import {
 
 const ExerciseLibrary = ({ exercises, setExercises, bodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const exercisesPerPage = 9;
+  const exercisesPerPage = 8;
   const totalPages = Math.ceil(exercises.length / exercisesPerPage);
 
   useEffect(() => {
@@ -44,8 +44,17 @@ const ExerciseLibrary = ({ exercises, setExercises, bodyPart }) => {
   );
 
   return (
-    <div className="mt-20 mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10">
+    <div className="pt-10 mx-auto">
+      {exercises.length !== 0 && (
+        <h4 className="text-content text-xl font-Mona-Sans text-pretty">
+          Found{" "}
+          <span className="border-spacing-2 border-b-2 border-opacity-90 border-content">
+            {exercises.length}
+          </span>{" "}
+          Matching the Search Criteria:
+        </h4>
+      )}
+      <div className="pt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 gap-y-10">
         {currentExercises.map((exercise) => (
           <ExerciseCard key={exercise.id} exercise={exercise} />
         ))}
