@@ -10,11 +10,13 @@ import PropTypes from "prop-types";
 import LoginModal from "../Modal/LoginModal";
 import RegisterModal from "../Modal/RegisterModal";
 import { useEscapeKeyHandler } from "../utils/functions";
+import CalendarComponent from "./CalendarComponent"; // Adjust the import path as needed
 
 const NavBar = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false); // State for calendar visibility
   const modalRef = useRef(null);
 
   const handleOpenLoginModal = () => setIsLoginModalOpen(true);
@@ -38,6 +40,10 @@ const NavBar = () => {
   const toggleSideBar = useCallback(() => {
     setIsSideBarOpen((prev) => !prev);
   }, []);
+
+  const toggleCalendar = () => {
+    setShowCalendar((prev) => !prev);
+  };
 
   useEscapeKeyHandler({
     sideBar: {
@@ -65,7 +71,12 @@ const NavBar = () => {
       <div className="flex items-center gap-4 justify-end">
         <SearchBar />
         <DarkModeButton />
-        <CalendarButton />
+        <CalendarButton onClick={toggleCalendar} />
+        {showCalendar && (
+          <div className="absolute top-16 right-0 dark:bg-backgroundAccent bg-white rounded-lg p-4">
+            <CalendarComponent />
+          </div>
+        )}
         <NotificationButton />
         <LoginButton handleOpenLoginModal={handleOpenLoginModal} />
         <SideBar isSideBarOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
