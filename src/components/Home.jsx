@@ -1,11 +1,11 @@
 import Header from "./Header/Header";
-import Hero from "./Home/Hero";
+import LandingPage from "./Home/LandingPage";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <Hero />
+      <LandingPage />
     </>
   );
 };

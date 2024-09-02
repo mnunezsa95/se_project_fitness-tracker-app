@@ -4,7 +4,7 @@ const SearchBar = () => {
       <label className="flex items-center gap-1">
         <input
           type="text"
-          className="grow border-b-2 dark:bg-background border-content placeholder:text-content placeholder:text-lg text-lg text-content outline-none"
+          className="grow border-b-2 bg-transparent border-content placeholder:text-content placeholder:text-lg text-lg text-content outline-none"
           placeholder="Search"
         />
         <svg
