@@ -1,0 +1,26 @@
+{
+  "name": "fitness-tracker-app-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "",
+  "keywords": [],
+  "author": "Marlon Nunez",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint .",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-import": "^2.30.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^2.8.8"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

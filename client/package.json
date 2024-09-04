@@ -1,8 +1,11 @@
 {
-  "name": "fitness-tracker-app",
-  "private": true,
-  "version": "0.0.0",
+  "name": "fitness-tracker-app-client",
+  "version": "1.0.0",
   "type": "module",
+  "description": "",
+  "keywords": [],
+  "author": "Marlon Nunez",
+  "license": "ISC",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
