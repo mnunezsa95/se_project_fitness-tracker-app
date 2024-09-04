@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import ExerciseMuscleTag from "./ExerciseMuscleTag";
-import { formatWords } from "../utils/functions";
+import { formatWords } from "../../utils/functions";
 import { useState, useRef } from "react";
 import ExerciseModal from "./ExerciseModal";
-import { useEscapeKeyHandler } from "../utils/functions";
+import { useEscapeKeyHandler } from "../../utils/functions";
 
 const ExerciseCard = ({ exercise }) => {
   const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);

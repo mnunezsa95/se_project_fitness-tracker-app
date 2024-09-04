@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { formatWords } from "../utils/functions";
+import { formatWords } from "../../utils/functions";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const ExerciseModal = ({ isOpen, onClose, exercise, modalRef }) => {

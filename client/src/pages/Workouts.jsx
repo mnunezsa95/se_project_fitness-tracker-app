@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Header from "./Header/Header";
-import ExerciseLibrary from "./Workouts/ExerciseLibrary";
-import ExerciseTitle from "./Workouts/ExerciseTitle";
-import ExerciseSubtitle from "./Workouts/ExerciseSubtitle";
-import Divider from "./General/Divider";
-import ExerciseSearchbar from "./Workouts/ExerciseSearchbar";
-import ExerciseCarousel from "./Workouts/ExerciseCarousel";
+import Header from "../components/Header/Header";
+import ExerciseLibrary from "../components/Workouts/ExerciseLibrary";
+import ExerciseTitle from "../components/Workouts/ExerciseTitle";
+import ExerciseSubtitle from "../components/Workouts/ExerciseSubtitle";
+import Divider from "../components/General/Divider";
+import ExerciseSearchbar from "../components/Workouts/ExerciseSearchbar";
+import ExerciseCarousel from "../components/Workouts/ExerciseCarousel";
 
 const Workouts = () => {
   const [bodyPart, setBodyPart] = useState("");

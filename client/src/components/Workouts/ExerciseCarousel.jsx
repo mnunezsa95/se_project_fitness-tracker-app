@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { bodyPartsURL, exerciseOptions, fetchData } from "../utils/fetchData";
+import {
+  bodyPartsURL,
+  exerciseOptions,
+  fetchData,
+} from "../../utils/fetchData";
 import ExerciseBodyPartCard from "./ExerciseBodyPartCard";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useTheme } from "../../contexts/ThemeContext";
@@ -28,7 +32,7 @@ import {
   cardioImageDark,
   allImage,
   allImageDark,
-} from "../utils/constants";
+} from "../../utils/constants";
 
 const ExerciseCarousel = ({ bodyPart, setBodyPart }) => {
   const { theme } = useTheme();

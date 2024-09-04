@@ -9,7 +9,7 @@ import SideBar from "./SideBar";
 import PropTypes from "prop-types";
 import LoginModal from "../Modal/LoginModal";
 import RegisterModal from "../Modal/RegisterModal";
-import { useEscapeKeyHandler } from "../utils/functions";
+import { useEscapeKeyHandler } from "../../utils/functions";
 import CalendarComponent from "./CalendarComponent"; // Adjust the import path as needed
 
 const NavBar = () => {

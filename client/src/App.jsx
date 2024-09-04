@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home.jsx";
-import Profile from "./components/Profile.jsx";
-import Workouts from "./components/Workouts.jsx";
-import Statistics from "./components/Statistics.jsx";
+import Home from "./pages/Home.jsx";
+import Profile from "./pages/Profile.jsx";
+import Workouts from "./pages/Workouts.jsx";
+import Statistics from "./pages/Statistics.jsx";
 import ThemeProvider from "./contexts/ThemeContextProvider.jsx";
 
 function App() {

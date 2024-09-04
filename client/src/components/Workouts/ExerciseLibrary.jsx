@@ -7,7 +7,7 @@ import {
   exerciseOptions,
   fetchData,
   limitParam,
-} from "../utils/fetchData";
+} from "../../utils/fetchData";
 
 const ExerciseLibrary = ({ exercises, setExercises, bodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);

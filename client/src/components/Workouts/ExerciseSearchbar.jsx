@@ -4,7 +4,7 @@ import {
   exerciseOptions,
   fetchData,
   limitParam,
-} from "../utils/fetchData";
+} from "../../utils/fetchData";
 import PropTypes from "prop-types";
 
 const ExerciseSearchbar = ({ exercises, setExercises }) => {
