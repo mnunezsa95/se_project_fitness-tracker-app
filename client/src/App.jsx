@@ -3,6 +3,7 @@ import Home from "./pages/Home.jsx";
 import Profile from "./pages/Profile.jsx";
 import Workouts from "./pages/Workouts.jsx";
 import Statistics from "./pages/Statistics.jsx";
+import Tools from "./pages/Tools.jsx";
 import ThemeProvider from "./contexts/ThemeContextProvider.jsx";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/workouts" element={<Workouts />} />
             <Route path="/statistics" element={<Statistics />} />
+            <Route path="/tools" element={<Tools />} />
           </Routes>
         </BrowserRouter>
       </div>
