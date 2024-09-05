@@ -2,14 +2,12 @@ import ToolCard from "./ToolCard";
 import bmiCalculatorDarkIcon from "../../images/bmi-calculator-dark.svg";
 import calorieCalculatorDarkIcon from "../../images/calories-calculator-dark.svg";
 import waterCalculatorDarkIcon from "../../images/h2o-calculator-dark.svg";
-
 import bmiCalculatorLightIcon from "../../images/bmi-calculator-light.svg";
 import caloreCalculatorLightIcon from "../../images/calories-calculator-light.svg";
 import waterCalculatorLightIcon from "../../images/h2o-calculator-light.svg";
-
 import { useTheme } from "../../contexts/ThemeContext";
 
-const ToolsAndCalculators = () => {
+const ToolsComponent = () => {
   const { theme } = useTheme();
 
   const tools = [
@@ -17,7 +15,8 @@ const ToolsAndCalculators = () => {
       toolName: "BMI Calculator",
       toolImg:
         theme === "dark" ? bmiCalculatorDarkIcon : bmiCalculatorLightIcon,
-      toolDescription: "abc",
+      toolDescription:
+        "A BMI (Body Mass Index) calculator estimates whether a person has a healthy body weight for their height",
     },
     {
       toolName: "Caloric Deficit Calculator",
@@ -25,13 +24,15 @@ const ToolsAndCalculators = () => {
         theme === "dark"
           ? calorieCalculatorDarkIcon
           : caloreCalculatorLightIcon,
-      toolDescription: "abc",
+      toolDescription:
+        "A CDC (Caloric Deficit Calculator) estimates the number of calories needed to lose weight.",
     },
     {
       toolName: "Daily Water Intake Calculator",
       toolImg:
         theme === "dark" ? waterCalculatorDarkIcon : waterCalculatorLightIcon,
-      toolDescription: "abc",
+      toolDescription:
+        "A Daily Water Intake Calculator estimates how much water to drink each day based on weight, age, activity level, and climate.",
     },
   ];
   return (
@@ -45,4 +46,4 @@ const ToolsAndCalculators = () => {
   );
 };
 
-export default ToolsAndCalculators;
+export default ToolsComponent;

@@ -1,11 +1,11 @@
 import Header from "../components/Header/Header";
-import ToolsAndCalculators from "../components/Tools/ToolsAndCalculators";
+import ToolsComponent from "../components/Tools/ToolsComponent";
 
 const Tools = () => {
   return (
     <>
       <Header />
-      <ToolsAndCalculators />
+      <ToolsComponent />
     </>
   );
 };
