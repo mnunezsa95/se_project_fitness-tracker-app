@@ -1,6 +1,6 @@
 import express from "express";
 
 const app = express();
-const { PORT = 3002 } = process.env;
+const PORT = 3002;
 
-app.listen(PORT, () => console.log(`App is listening at port ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

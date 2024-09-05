@@ -3,6 +3,7 @@ import {
   HomeIcon,
   ChartBarIcon,
   UserCircleIcon,
+  CalculatorIcon,
 } from "@heroicons/react/24/outline";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import PropTypes from "prop-types";
@@ -29,6 +30,11 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
       title: "Statistics",
       link: "/statistics",
       image: ChartBarIcon,
+    },
+    {
+      title: "Tools & Calculators",
+      link: "/tools",
+      image: CalculatorIcon,
     },
   ];
 
