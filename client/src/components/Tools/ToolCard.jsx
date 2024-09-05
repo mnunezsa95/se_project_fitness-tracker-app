@@ -12,7 +12,7 @@ const ToolCard = ({ tool }) => {
       >
         <img src={tool.toolImg} alt={tool.toolName} className="w-64 h-auto" />
       </button>
-      <p>{tool.toolDescription}</p>
+      <p className="pt-10">{tool.toolDescription}</p>
     </div>
   );
 };

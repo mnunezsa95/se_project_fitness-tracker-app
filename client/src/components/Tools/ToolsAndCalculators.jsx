@@ -1,6 +1,12 @@
 import ToolCard from "./ToolCard";
 import bmiCalculatorDarkIcon from "../../images/bmi-calculator-dark.svg";
+import calorieCalculatorDarkIcon from "../../images/calories-calculator-dark.svg";
+import waterCalculatorDarkIcon from "../../images/h2o-calculator-dark.svg";
+
 import bmiCalculatorLightIcon from "../../images/bmi-calculator-light.svg";
+import caloreCalculatorLightIcon from "../../images/calories-calculator-light.svg";
+import waterCalculatorLightIcon from "../../images/h2o-calculator-light.svg";
+
 import { useTheme } from "../../contexts/ThemeContext";
 
 const ToolsAndCalculators = () => {
@@ -15,12 +21,16 @@ const ToolsAndCalculators = () => {
     },
     {
       toolName: "Caloric Deficit Calculator",
-      toolImg: null,
+      toolImg:
+        theme === "dark"
+          ? calorieCalculatorDarkIcon
+          : caloreCalculatorLightIcon,
       toolDescription: "abc",
     },
     {
       toolName: "Daily Water Intake Calculator",
-      toolImg: null,
+      toolImg:
+        theme === "dark" ? waterCalculatorDarkIcon : waterCalculatorLightIcon,
       toolDescription: "abc",
     },
   ];
