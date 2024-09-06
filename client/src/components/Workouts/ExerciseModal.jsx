@@ -16,7 +16,7 @@ const ExerciseModal = ({ isOpen, onClose, exercise, modalRef }) => {
         <button
           className="absolute top-4 right-4"
           onClick={onClose}
-          aria-label="Close modal"
+          aria-label="Close"
         >
           <XMarkIcon className="size-8 text-content" />
         </button>
@@ -36,7 +36,7 @@ const ExerciseModal = ({ isOpen, onClose, exercise, modalRef }) => {
           </p>
           {exerciseInstructions.map((inst, index) => (
             <p
-              className="text-content font-Mona-Sans font-bold text-"
+              className="text-content font-Mona-Sans font-bold"
               key={index}
             >{`${index + 1}) ${inst}`}</p>
           ))}

@@ -1,4 +1,6 @@
+import { useState } from "react";
 import ToolCard from "./ToolCard";
+import ToolModal from "./ToolModal";
 import bmiCalculatorDarkIcon from "../../images/bmi-calculator-dark.svg";
 import calorieCalculatorDarkIcon from "../../images/calories-calculator-dark.svg";
 import waterCalculatorDarkIcon from "../../images/h2o-calculator-dark.svg";
@@ -9,6 +11,7 @@ import { useTheme } from "../../contexts/ThemeContext";
 
 const ToolsComponent = () => {
   const { theme } = useTheme();
+  const [openTool, setOpenTool] = useState(null); // Manage which tool's modal is open
 
   const tools = [
     {
@@ -35,13 +38,30 @@ const ToolsComponent = () => {
         "A Daily Water Intake Calculator estimates how much water to drink each day based on weight, age, activity level, and climate.",
     },
   ];
+
+  const handleOpenModal = (tool) => {
+    setOpenTool(tool);
+  };
+
+  const handleCloseModal = () => {
+    setOpenTool(null);
+  };
+
   return (
     <div className="flex items-center justify-center h-[90vh] dark:text-content text-backgroundAccent">
-      <div className="flex gap-20">
-        {tools.map((tool, i) => {
-          return <ToolCard tool={tool} key={i} />;
-        })}
+      <div className="flex gap-10">
+        {tools.map((tool, i) => (
+          <ToolCard key={i} tool={tool} onClick={() => handleOpenModal(tool)} />
+        ))}
       </div>
+
+      {openTool && (
+        <ToolModal
+          isOpen={!!openTool}
+          onClose={handleCloseModal}
+          tool={openTool}
+        />
+      )}
     </div>
   );
 };
