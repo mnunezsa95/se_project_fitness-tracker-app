@@ -11,7 +11,9 @@ import { useTheme } from "../../contexts/ThemeContext";
 
 const ToolsComponent = () => {
   const { theme } = useTheme();
-  const [openTool, setOpenTool] = useState(null); // Manage which tool's modal is open
+  const [openTool, setOpenTool] = useState(null);
+  const handleOpenModal = (tool) => setOpenTool(tool);
+  const handleCloseModal = () => setOpenTool(null);
 
   const tools = [
     {
@@ -38,14 +40,6 @@ const ToolsComponent = () => {
         "A Daily Water Intake Calculator estimates how much water to drink each day based on weight, age, activity level, and climate.",
     },
   ];
-
-  const handleOpenModal = (tool) => {
-    setOpenTool(tool);
-  };
-
-  const handleCloseModal = () => {
-    setOpenTool(null);
-  };
 
   return (
     <div className="flex items-center justify-center h-[90vh] dark:text-content text-backgroundAccent">
