@@ -6,7 +6,7 @@ const ToolModal = ({ isOpen, onClose, tool, children }) => {
 
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-90 flex justify-center items-center z-30">
-      <div className="dark:bg-backgroundAccent bg-white p-6 rounded-lg shadow-lg max-w-screen-sm w-full relative z-40 font-Mona-Sans">
+      <div className="dark:bg-backgroundAccent bg-white p-6 rounded-lg shadow-lg max-w-screen-sm w-1/2 relative z-40 font-Mona-Sans">
         <button
           className="absolute top-4 right-4"
           onClick={onClose}

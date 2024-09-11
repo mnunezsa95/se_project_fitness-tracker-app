@@ -1,8 +1,28 @@
 import { useEffect } from "react";
 
+export const calculateBMI = (weight, weightUnit, heightFeet, heightInches, heightMeters, heightUnit) => {
+  let weightInKg;
+  let heightInMeters;
+
+  if (weightUnit === "lbs") weightInKg = weight * 0.453592;
+  else weightInKg = weight;
+
+  if (heightUnit === "ft") {
+    const heightInInches = parseFloat(heightFeet) * 12 + parseFloat(heightInches);
+    heightInMeters = heightInInches * 0.0254;
+  } else {
+    heightInMeters = heightMeters;
+  }
+
+  if (heightInMeters > 0) {
+    return (weightInKg / (heightInMeters * heightInMeters)).toFixed(2);
+  } else {
+    return null;
+  }
+};
+
 export const formatWords = (sentence) => {
   if (!sentence) return "";
-
   const commonWords = new Set(["a", "an", "the", "and", "but", "or", "for", "nor", "on", "at", "to", "is", "with"]);
 
   return sentence
