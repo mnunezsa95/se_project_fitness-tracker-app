@@ -1,22 +1,18 @@
 import PropTypes from "prop-types";
 import ToolModal from "./ToolModal";
 
-const BMIModal = ({ isOpen, onClose, tool }) => {
+const BMI = ({ isOpen, onClose, tool }) => {
   return (
     <ToolModal isOpen={isOpen} onClose={onClose} tool={tool}>
-      <div>d</div>
+      <div>1</div>
     </ToolModal>
   );
 };
 
-BMIModal.propTypes = {
-  isOpen: PropTypes.bool,
+BMI.propTypes = {
+  isOpen: PropTypes.object,
   onClose: PropTypes.func,
-  tool: PropTypes.shape({
-    toolName: PropTypes.string.isRequired,
-    toolImg: PropTypes.string.isRequired,
-    toolDescription: PropTypes.string.isRequired,
-  }),
+  tool: PropTypes.object,
 };
 
-export default BMIModal;
+export default BMI;

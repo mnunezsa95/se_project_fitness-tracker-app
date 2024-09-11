@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ToolCard from "./ToolCard";
-import ToolModal from "./ToolModal";
+import BMI from "./BMI";
+import CalorieDeficit from "./CalorieDeficit";
+import WaterIntake from "./WaterIntake";
 import bmiCalculatorDarkIcon from "../../images/bmi-calculator-dark.svg";
 import calorieCalculatorDarkIcon from "../../images/calories-calculator-dark.svg";
 import waterCalculatorDarkIcon from "../../images/h2o-calculator-dark.svg";
@@ -48,10 +50,19 @@ const ToolsComponent = () => {
           <ToolCard key={i} tool={tool} onClick={() => handleOpenModal(tool)} />
         ))}
       </div>
-
-      {openTool && (
-        <ToolModal
-          isOpen={!!openTool}
+      {openTool && openTool.toolName === "BMI Calculator" && (
+        <BMI isOpen={openTool} onClose={handleCloseModal} tool={openTool} />
+      )}
+      {openTool && openTool.toolName === "Caloric Deficit Calculator" && (
+        <CalorieDeficit
+          isOpen={openTool}
+          onClose={handleCloseModal}
+          tool={openTool}
+        />
+      )}
+      {openTool && openTool.toolName === "Daily Water Intake Calculator" && (
+        <WaterIntake
+          isOpen={openTool}
           onClose={handleCloseModal}
           tool={openTool}
         />

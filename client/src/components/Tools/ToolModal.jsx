@@ -24,11 +24,9 @@ const ToolModal = ({ isOpen, onClose, tool, children }) => {
 };
 
 ToolModal.propTypes = {
-  isOpen: PropTypes.bool,
+  isOpen: PropTypes.object,
   onClose: PropTypes.func,
-  tool: PropTypes.shape({
-    toolName: PropTypes.string.isRequired,
-  }),
+  tool: PropTypes.object,
   children: PropTypes.node,
 };
 
