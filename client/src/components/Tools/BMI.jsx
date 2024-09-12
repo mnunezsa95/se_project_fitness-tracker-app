@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import ToolModal from "./ToolModal";
 import { useState } from "react";
-import { calculateBMI } from "../../utils/functions";
+import { calculateBMI, classifyBMI } from "../../utils/functions";
 import bmiIndexChartDark from "../../images/bmi-index-chart-dark.svg";
 import bmiIndexChartLight from "../../images/bmi-index-chart-light.svg";
 
@@ -126,8 +126,17 @@ const BMICalculator = ({ isOpen, onClose, tool }) => {
         </button>
         {bmi !== null && (
           <div className="mt-4 text-xl">
-            <span>Your BMI: </span>
-            <span className="font-Mona-Sans">{bmi}</span>
+            {!isNaN(bmi) ? (
+              <>
+                <span>Your BMI: </span>
+                <span className="font-Mona-Sans">{bmi}</span>
+                <p>You are in the &ldquo;{classifyBMI(bmi)}&rdquo; category</p>
+              </>
+            ) : (
+              <p className="text-red-500">
+                Invalid input. Please enter valid values for weight & height.
+              </p>
+            )}
           </div>
         )}
       </form>

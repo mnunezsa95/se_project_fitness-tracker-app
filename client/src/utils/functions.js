@@ -21,6 +21,24 @@ export const calculateBMI = (weight, weightUnit, heightFeet, heightInches, heigh
   }
 };
 
+export const classifyBMI = (bmiScore) => {
+  let bmiClassification;
+
+  if (bmiScore < 18.5) {
+    bmiClassification = "Underweight";
+  } else if (bmiScore >= 18.5 && bmiScore <= 24.99) {
+    bmiClassification = "Normal";
+  } else if (bmiScore >= 25 && bmiScore <= 29.99) {
+    bmiClassification = "Overweight";
+  } else if (bmiScore >= 30) {
+    bmiClassification = "Obese";
+  } else {
+    return "Could not calculate a valid BMI Score; Please check your inputs";
+  }
+
+  return bmiClassification;
+};
+
 export const formatWords = (sentence) => {
   if (!sentence) return "";
   const commonWords = new Set(["a", "an", "the", "and", "but", "or", "for", "nor", "on", "at", "to", "is", "with"]);
