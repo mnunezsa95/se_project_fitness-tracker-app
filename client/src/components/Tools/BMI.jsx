@@ -2,9 +2,14 @@ import PropTypes from "prop-types";
 import ToolModal from "./ToolModal";
 import { useState } from "react";
 import { calculateBMI } from "../../utils/functions";
+import bmiIndexChartDark from "../../images/bmi-index-chart-dark.svg";
+import bmiIndexChartLight from "../../images/bmi-index-chart-light.svg";
 
-const BMI = ({ isOpen, onClose, tool }) => {
-  const [unitSystem, setUnitSystem] = useState("metric"); // 'metric' or 'imperial'
+import { useTheme } from "../../contexts/ThemeContext";
+
+const BMICalculator = ({ isOpen, onClose, tool }) => {
+  const { theme } = useTheme();
+  const [unitSystem, setUnitSystem] = useState("imperial");
   const [weight, setWeight] = useState("");
   const [heightFeet, setHeightFeet] = useState("");
   const [heightInches, setHeightInches] = useState("");
@@ -57,7 +62,7 @@ const BMI = ({ isOpen, onClose, tool }) => {
             </button>
           </div>
         </div>
-        <div className="flex gap-x-6 mt-4 justify-center">
+        <div className="flex gap-x-6 mt-4 ">
           <label className="text-xl">
             Enter your weight:
             <input
@@ -106,18 +111,23 @@ const BMI = ({ isOpen, onClose, tool }) => {
             )}
           </label>
         </div>
-
+        <div className="flex justify-center">
+          <img
+            src={theme === "dark" ? bmiIndexChartDark : bmiIndexChartLight}
+            className="mt-3 w-[450px] h-auto"
+          />
+        </div>
         <button
           type="button"
-          className="mt-8 w-full py-2 bg-content text-white rounded hover:opacity-80"
+          className="mt-5 w-full py-2 bg-content text-white rounded hover:opacity-80"
           onClick={handleCalculateBMI}
         >
           Calculate
         </button>
         {bmi !== null && (
-          <div className="mt-4 text-md">
+          <div className="mt-4 text-xl">
             <span>Your BMI: </span>
-            <span className="font-bold">{bmi}</span>
+            <span className="font-Mona-Sans">{bmi}</span>
           </div>
         )}
       </form>
@@ -125,10 +135,10 @@ const BMI = ({ isOpen, onClose, tool }) => {
   );
 };
 
-BMI.propTypes = {
+BMICalculator.propTypes = {
   isOpen: PropTypes.object,
   onClose: PropTypes.func,
   tool: PropTypes.object,
 };
 
-export default BMI;
+export default BMICalculator;

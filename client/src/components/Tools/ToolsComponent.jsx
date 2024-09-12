@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ToolCard from "./ToolCard";
-import BMI from "./BMI";
+import BMICalculator from "./BMI";
 import CalorieDeficit from "./CalorieDeficit";
 import WaterIntake from "./WaterIntake";
 import bmiCalculatorDarkIcon from "../../images/bmi-calculator-dark.svg";
@@ -51,7 +51,11 @@ const ToolsComponent = () => {
         ))}
       </div>
       {openTool && openTool.toolName === "BMI Calculator" && (
-        <BMI isOpen={openTool} onClose={handleCloseModal} tool={openTool} />
+        <BMICalculator
+          isOpen={openTool}
+          onClose={handleCloseModal}
+          tool={openTool}
+        />
       )}
       {openTool && openTool.toolName === "Caloric Deficit Calculator" && (
         <CalorieDeficit
