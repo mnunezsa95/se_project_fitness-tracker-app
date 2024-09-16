@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ToolCard from "./ToolCard";
-import BMICalculator from "./BMI";
+import BMICalculator from "./BMICalculator";
 import CalorieDeficit from "./CalorieDeficit";
 import WaterIntake from "./WaterIntake";
 import bmiCalculatorDarkIcon from "../../images/bmi-calculator-dark.svg";
@@ -26,13 +26,13 @@ const ToolsComponent = () => {
         "A BMI (Body Mass Index) calculator estimates whether a person has a healthy body weight for their height",
     },
     {
-      toolName: "Caloric Deficit Calculator",
+      toolName: "Caloric Calculator",
       toolImg:
         theme === "dark"
           ? calorieCalculatorDarkIcon
           : caloreCalculatorLightIcon,
       toolDescription:
-        "A CDC (Caloric Deficit Calculator) estimates the number of calories needed to lose weight.",
+        "A Caloric Calculator estimates the number of calories a person needs to consume each day.",
     },
     {
       toolName: "Daily Water Intake Calculator",
@@ -57,7 +57,7 @@ const ToolsComponent = () => {
           tool={openTool}
         />
       )}
-      {openTool && openTool.toolName === "Caloric Deficit Calculator" && (
+      {openTool && openTool.toolName === "Caloric Calculator" && (
         <CalorieDeficit
           isOpen={openTool}
           onClose={handleCloseModal}
