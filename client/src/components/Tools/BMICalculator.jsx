@@ -6,6 +6,7 @@ import bmiIndexChartDark from "../../images/bmi-index-chart-dark.svg";
 import bmiIndexChartLight from "../../images/bmi-index-chart-light.svg";
 
 import { useTheme } from "../../contexts/ThemeContext";
+import UnitButton from "./UnitButton";
 
 const BMICalculator = ({ isOpen, onClose, tool }) => {
   const { theme } = useTheme();
@@ -31,32 +32,10 @@ const BMICalculator = ({ isOpen, onClose, tool }) => {
       <form className="text-content">
         <div className="flex text-md items-center gap-x-3">
           <span className="text-xl">Choose unit system:</span>
-          <div>
-            <button
-              type="button"
-              onClick={() => handleUnitSystemChange("imperial")}
-              className={`w-20 py-1 px-2 rounded-l-md border dark:border-gray-300 border-content ${
-                unitSystem === "imperial"
-                  ? "bg-content text-white"
-                  : "dark:bg-white bg-gray-200 text-backgroundAccent hover:bg-gray-100"
-              }`}
-              aria-pressed={unitSystem === "imperial"}
-            >
-              Imperial
-            </button>
-            <button
-              type="button"
-              onClick={() => handleUnitSystemChange("metric")}
-              className={`w-20 py-1 px-2 rounded-r-md border dark:border-gray-300 border-content ${
-                unitSystem === "metric"
-                  ? "bg-content text-white"
-                  : "dark:bg-white bg-gray-200 text-backgroundAccent hover:bg-gray-100"
-              }`}
-              aria-pressed={unitSystem === "metric"}
-            >
-              Metric
-            </button>
-          </div>
+          <UnitButton
+            handleUnitSystemChange={handleUnitSystemChange}
+            unitSystem={unitSystem}
+          />
         </div>
         <div className="flex gap-x-6 mt-4 ">
           <label className="text-xl">
