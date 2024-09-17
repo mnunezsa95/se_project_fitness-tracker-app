@@ -29,6 +29,8 @@ const BMICalculator = ({
     setBmi(BMIValue);
   };
 
+  const isButtonDisabled = weight === "" || height === "";
+
   return (
     <ToolModal isOpen={isOpen} onClose={onClose} tool={tool}>
       <form className="text-content">
@@ -44,7 +46,7 @@ const BMICalculator = ({
             Enter your weight:
             <input
               name="weight"
-              placeholder={unitSystem === "imperial" ? "lbs" : "kgs"}
+              placeholder={unitSystem === "imperial" ? "lbs" : "kg"}
               className="ml-2 w-12 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
               aria-label={`Weight in ${
                 unitSystem === "imperial" ? "lbs" : "kgs"
@@ -73,24 +75,19 @@ const BMICalculator = ({
         </div>
         <button
           type="button"
-          className="mt-5 w-full py-2 bg-content text-white rounded hover:opacity-80"
+          className={`mt-5 w-full py-2 bg-content text-white rounded hover:opacity-80 ${
+            isButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
+          }`}
           onClick={handleCalculateBMI}
+          disabled={isButtonDisabled}
         >
           Calculate
         </button>
         {bmi !== null && (
           <div className="mt-4 text-xl">
-            {!isNaN(bmi) ? (
-              <>
-                <span>Your BMI: </span>
-                <span className="font-Mona-Sans">{bmi}</span>
-                <p>You are in the &ldquo;{classifyBMI(bmi)}&rdquo; category</p>
-              </>
-            ) : (
-              <p className="text-red-500">
-                Invalid input. Please enter valid values for weight & height.
-              </p>
-            )}
+            <span>Your BMI: </span>
+            <span className="font-Mona-Sans">{bmi}</span>
+            <p>You are in the &ldquo;{classifyBMI(bmi)}&rdquo; category</p>
           </div>
         )}
       </form>

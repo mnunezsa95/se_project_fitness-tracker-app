@@ -68,13 +68,13 @@ export const calculateCalorieConsumption = (age, gender, weight, weightUnit, hei
   }
 
   if (heightUnit === "ft") {
-    const heightParts = height.match(/(\d+)'(\d*)"/);
-    const feet = parseFloat(heightParts[1]);
-    const inches = parseFloat(heightParts[2] || 0);
+    const heightParts = height.split("'");
+    const feet = Number(heightParts[0]);
+    const inches = Number(heightParts[1] || 0);
     const totalInches = feet * 12 + inches;
     heightInCm = totalInches * 2.54;
   } else {
-    heightInCm = height * 100;
+    heightInCm = height;
   }
 
   let bmr;
