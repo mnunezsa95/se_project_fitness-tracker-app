@@ -77,8 +77,8 @@ const CalorieDeficit = ({
 };
 
 CalorieDeficit.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.object,
+  onClose: PropTypes.func,
   tool: PropTypes.object,
   unitSystem: PropTypes.string.isRequired,
   handleUnitSystemChange: PropTypes.func.isRequired,
