@@ -11,9 +11,7 @@ const BMICalculator = ({ isOpen, onClose, tool }) => {
   const { theme } = useTheme();
   const [unitSystem, setUnitSystem] = useState("imperial");
   const [weight, setWeight] = useState("");
-  const [heightFeet, setHeightFeet] = useState("");
-  const [heightInches, setHeightInches] = useState("");
-  const [heightMeters, setHeightMeters] = useState("");
+  const [height, setHeight] = useState("");
   const [bmi, setBmi] = useState(null);
 
   const handleUnitSystemChange = (system) => setUnitSystem(system);
@@ -22,9 +20,7 @@ const BMICalculator = ({ isOpen, onClose, tool }) => {
     const BMIValue = calculateBMI(
       weight,
       unitSystem === "imperial" ? "lbs" : "kgs",
-      heightFeet,
-      heightInches,
-      heightMeters,
+      height,
       unitSystem === "imperial" ? "ft" : "m"
     );
     setBmi(BMIValue);
@@ -68,7 +64,7 @@ const BMICalculator = ({ isOpen, onClose, tool }) => {
             <input
               name="weight"
               placeholder={unitSystem === "imperial" ? "lbs" : "kgs"}
-              className="ml-1 w-10 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
+              className="ml-1 w-12 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
               aria-label={`Weight in ${
                 unitSystem === "imperial" ? "lbs" : "kgs"
               }`}
@@ -78,37 +74,14 @@ const BMICalculator = ({ isOpen, onClose, tool }) => {
           </label>
           <label className="block text-xl">
             Enter your height:
-            {unitSystem === "imperial" ? (
-              <>
-                <input
-                  name="height-feet"
-                  placeholder="ft"
-                  className="ml-1 w-10 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
-                  aria-label="Height in feet"
-                  value={heightFeet}
-                  onChange={(e) => setHeightFeet(e.target.value)}
-                />
-                <span>&apos;</span>
-                <input
-                  name="height-inches"
-                  placeholder="in"
-                  className="ml-2 w-10 bg-transparent rounded text-center placeholder:text-center placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
-                  aria-label="Height in inches"
-                  value={heightInches}
-                  onChange={(e) => setHeightInches(e.target.value)}
-                />
-                <span>&rdquo;</span>
-              </>
-            ) : (
-              <input
-                name="height-meters"
-                placeholder="m"
-                className="ml-2 w-10 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
-                aria-label="Height in meters"
-                value={heightMeters}
-                onChange={(e) => setHeightMeters(e.target.value)}
-              />
-            )}
+            <input
+              name="height"
+              placeholder={unitSystem === "imperial" ? "ft'in" : "cm"}
+              className="ml-1 w-12 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
+              aria-label="Height in feet or centimeters"
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
+            />
           </label>
         </div>
         <div className="flex justify-center">

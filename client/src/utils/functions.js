@@ -1,25 +1,36 @@
 import { useEffect } from "react";
 
-export const calculateBMI = (weight, weightUnit, heightFeet, heightInches, heightMeters, heightUnit) => {
+/* ---------------------------------------- CALCULATE BMI --------------------------------------- */
+
+export const calculateBMI = (weight, weightUnit, height, heightUnit) => {
   let weightInKg;
-  let heightInMeters;
+  let heightInCm;
 
-  if (weightUnit === "lbs") weightInKg = weight * 0.453592;
-  else weightInKg = weight;
-
-  if (heightUnit === "ft") {
-    const heightInInches = parseFloat(heightFeet) * 12 + parseFloat(heightInches);
-    heightInMeters = heightInInches * 0.0254;
+  if (weightUnit === "lbs") {
+    weightInKg = weight * 0.453592;
   } else {
-    heightInMeters = heightMeters;
+    weightInKg = weight;
   }
 
-  if (heightInMeters > 0) {
+  if (heightUnit === "ft") {
+    const heightParts = height.split("'");
+    const feet = Number(heightParts[0]);
+    const inches = Number(heightParts[1] || 0);
+    const totalInches = feet * 12 + inches;
+    heightInCm = totalInches * 2.54;
+  } else {
+    heightInCm = Number(height);
+  }
+
+  if (heightInCm > 0) {
+    const heightInMeters = heightInCm / 100;
     return (weightInKg / (heightInMeters * heightInMeters)).toFixed(2);
   } else {
     return null;
   }
 };
+
+/* ---------------------------------------- CLASSIFY BMI ---------------------------------------- */
 
 export const classifyBMI = (bmiScore) => {
   let bmiClassification;
@@ -38,6 +49,8 @@ export const classifyBMI = (bmiScore) => {
 
   return bmiClassification;
 };
+
+/* ------------------------------------- CALORIE CALCULATOR ------------------------------------- */
 
 export const calculateCalorieConsumption = (age, gender, weight, weightUnit, height, heightUnit, activity) => {
   const WEIGHT_CONSTANT = 10;
@@ -83,7 +96,7 @@ export const calculateCalorieConsumption = (age, gender, weight, weightUnit, hei
   return Math.round(totalCalories);
 };
 
-/* ---------------------------------------- Format Words ---------------------------------------- */
+/* ---------------------------------------- FORMAT WORDS ---------------------------------------- */
 
 export const formatWords = (sentence) => {
   if (!sentence) return "";
@@ -99,6 +112,8 @@ export const formatWords = (sentence) => {
     })
     .join(" ");
 };
+
+/* --------------------------------------- ESCAPE HANDLER --------------------------------------- */
 
 export const useEscapeKeyHandler = (modals) => {
   useEffect(() => {
