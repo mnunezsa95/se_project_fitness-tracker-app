@@ -1,21 +1,23 @@
 import PropTypes from "prop-types";
 import ToolModal from "./ToolModal";
 import { useState } from "react";
+import { useTheme } from "../../contexts/ThemeContext";
 import { calculateBMI, classifyBMI } from "../../utils/functions";
+import UnitButton from "./UnitButton";
 import bmiIndexChartDark from "../../images/bmi-index-chart-dark.svg";
 import bmiIndexChartLight from "../../images/bmi-index-chart-light.svg";
 
-import { useTheme } from "../../contexts/ThemeContext";
-import UnitButton from "./UnitButton";
-
-const BMICalculator = ({ isOpen, onClose, tool }) => {
+const BMICalculator = ({
+  isOpen,
+  onClose,
+  tool,
+  unitSystem,
+  handleUnitSystemChange,
+}) => {
   const { theme } = useTheme();
-  const [unitSystem, setUnitSystem] = useState("imperial");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [bmi, setBmi] = useState(null);
-
-  const handleUnitSystemChange = (system) => setUnitSystem(system);
 
   const handleCalculateBMI = () => {
     const BMIValue = calculateBMI(
@@ -43,7 +45,7 @@ const BMICalculator = ({ isOpen, onClose, tool }) => {
             <input
               name="weight"
               placeholder={unitSystem === "imperial" ? "lbs" : "kgs"}
-              className="ml-1 w-12 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
+              className="ml-2 w-12 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
               aria-label={`Weight in ${
                 unitSystem === "imperial" ? "lbs" : "kgs"
               }`}
@@ -56,7 +58,7 @@ const BMICalculator = ({ isOpen, onClose, tool }) => {
             <input
               name="height"
               placeholder={unitSystem === "imperial" ? "ft'in" : "cm"}
-              className="ml-1 w-12 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
+              className="ml-2 w-12 bg-transparent rounded text-center placeholder:text-center  placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
               aria-label="Height in feet or centimeters"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
@@ -100,6 +102,8 @@ BMICalculator.propTypes = {
   isOpen: PropTypes.object,
   onClose: PropTypes.func,
   tool: PropTypes.object,
+  unitSystem: PropTypes.string.isRequired,
+  handleUnitSystemChange: PropTypes.func.isRequired,
 };
 
 export default BMICalculator;

@@ -14,6 +14,8 @@ import { useTheme } from "../../contexts/ThemeContext";
 const ToolsComponent = () => {
   const { theme } = useTheme();
   const [openTool, setOpenTool] = useState(null);
+  const [unitSystem, setUnitSystem] = useState("imperial");
+  const handleUnitSystemChange = (system) => setUnitSystem(system);
   const handleOpenModal = (tool) => setOpenTool(tool);
   const handleCloseModal = () => setOpenTool(null);
 
@@ -55,6 +57,8 @@ const ToolsComponent = () => {
           isOpen={openTool}
           onClose={handleCloseModal}
           tool={openTool}
+          unitSystem={unitSystem}
+          handleUnitSystemChange={handleUnitSystemChange}
         />
       )}
       {openTool && openTool.toolName === "Caloric Calculator" && (
@@ -62,6 +66,8 @@ const ToolsComponent = () => {
           isOpen={openTool}
           onClose={handleCloseModal}
           tool={openTool}
+          unitSystem={unitSystem}
+          handleUnitSystemChange={handleUnitSystemChange}
         />
       )}
       {openTool && openTool.toolName === "Daily Water Intake Calculator" && (
