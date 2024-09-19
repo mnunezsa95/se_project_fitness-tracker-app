@@ -1,48 +1,37 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import ToolModal from "./ToolModal";
-import { calculateCalorieConsumption } from "../../utils/functions";
 import UnitButton from "./UnitButton";
+import { useState } from "react";
+import { calculateWaterIntake } from "../../utils/functions";
 
-const CalorieCalculator = ({
+const WaterIntakeCalculator = ({
   isOpen,
   onClose,
   tool,
-  handleUnitSystemChange,
   unitSystem,
+  handleUnitSystemChange,
 }) => {
   const [age, setAge] = useState("");
-  const [gender, setGender] = useState("Male");
-  const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [activityLevel, setActivityLevel] = useState("lightly_active");
-  const [calorieValue, setCalorieValue] = useState("");
+  const [waterIntakeValue, setWaterIntakeValue] = useState("");
+  const isFormIncomplete = !age || !weight;
 
-  const handleFormSubmit = (e) => {
+  const handleCalculateWaterIntake = (e) => {
     e.preventDefault();
-    const calorieValue = calculateCalorieConsumption(
-      age,
-      gender,
+    const waterIntakeValue = calculateWaterIntake(
       weight,
       unitSystem === "imperial" ? "lb" : "kg",
-      height,
-      unitSystem === "imperial" ? "ft" : "m",
       activityLevel
     );
-
-    setCalorieValue(calorieValue);
+    setWaterIntakeValue(waterIntakeValue);
   };
-
-  // Check if any of the required fields are empty
-  const isFormIncomplete = !age || !height || !weight;
-
   return (
     <ToolModal isOpen={isOpen} onClose={onClose} tool={tool}>
       <UnitButton
         handleUnitSystemChange={handleUnitSystemChange}
         unitSystem={unitSystem}
       />
-
       <form className="text-content">
         <div className="flex flex-col mt-2">
           <label className="text-xl mt-2">
@@ -54,35 +43,6 @@ const CalorieCalculator = ({
               aria-label="age"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-            />
-          </label>
-          <label className="text-xl mt-2">
-            Specify your gender:
-            <input
-              type="radio"
-              value="Male"
-              checked={gender === "Male"}
-              onChange={() => setGender("Male")}
-              className="ml-2"
-            />
-            <label className="ml-1 mr-2">Male</label>
-            <input
-              type="radio"
-              value="Female"
-              checked={gender === "Female"}
-              onChange={() => setGender("Female")}
-              className="ml-2"
-            />
-            <label className="ml-1 mr-2">Female</label>
-          </label>
-          <label className="text-xl mt-2">
-            Enter your height:
-            <input
-              name="height"
-              placeholder={unitSystem === "imperial" ? "ft'in" : "cm"}
-              className="ml-2 w-20 bg-transparent rounded text-center placeholder:text-center placeholder:text-content placeholder:opacity-75 border-b-2 border-b-content outline-none border-opacity-60"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
             />
           </label>
           <label className="text-xl mt-2">
@@ -125,40 +85,27 @@ const CalorieCalculator = ({
           className={`mt-5 w-full py-2 bg-content text-white rounded hover:opacity-80 ${
             isFormIncomplete ? "opacity-50 cursor-not-allowed" : ""
           }`}
-          onClick={handleFormSubmit}
+          onClick={handleCalculateWaterIntake}
           disabled={isFormIncomplete}
         >
           Calculate
         </button>
+        {waterIntakeValue !== "" ? (
+          <div className="mt-4 flex flex-col items-center">
+            <p>Recommended Water Intake:</p>
+            <p>
+              {waterIntakeValue} L/day (~{waterIntakeValue * 1000} mL/day, ~
+              {Math.round(waterIntakeValue * 33.814)} oz/day, ~
+              {Math.round(waterIntakeValue * 4.22675)} cup/day)
+            </p>
+          </div>
+        ) : null}
       </form>
-      {calorieValue !== "" ? (
-        <div className="mt-4 flex flex-col items-center justify-center w-full h-full text-content">
-          <div className="flex justify-center">
-            <p className="w-36 text-left">Maintain Weight</p>
-            <span className="w-8 text-center">&#x2192;</span>
-            <p>{calorieValue} Cal/Day</p>
-          </div>
-          <div className="flex justify-center">
-            <p className="w-36 text-left">
-              Lose {unitSystem === "Imperial" ? "1 lb" : "0.45 kg"}/week
-            </p>
-            <span className="w-8 text-center">&#x2192;</span>
-            <p>{calorieValue - 500} Cal/Day</p>
-          </div>
-          <div className="flex  justify-center">
-            <p className="w-36 text-left">
-              Lose {unitSystem === "Imperial" ? "2 lb" : "0.90 kg"}/week
-            </p>
-            <span className="w-8 text-center">&#x2192;</span>
-            <p>{calorieValue - 1000} Cal/Day</p>
-          </div>
-        </div>
-      ) : null}
     </ToolModal>
   );
 };
 
-CalorieCalculator.propTypes = {
+WaterIntakeCalculator.propTypes = {
   isOpen: PropTypes.object,
   onClose: PropTypes.func,
   tool: PropTypes.object,
@@ -166,4 +113,4 @@ CalorieCalculator.propTypes = {
   handleUnitSystemChange: PropTypes.func.isRequired,
 };
 
-export default CalorieCalculator;
+export default WaterIntakeCalculator;

@@ -22,7 +22,7 @@ const BMICalculator = ({
   const handleCalculateBMI = () => {
     const BMIValue = calculateBMI(
       weight,
-      unitSystem === "imperial" ? "lbs" : "kgs",
+      unitSystem === "imperial" ? "lb" : "kg",
       height,
       unitSystem === "imperial" ? "ft" : "m"
     );
@@ -33,14 +33,11 @@ const BMICalculator = ({
 
   return (
     <ToolModal isOpen={isOpen} onClose={onClose} tool={tool}>
+      <UnitButton
+        handleUnitSystemChange={handleUnitSystemChange}
+        unitSystem={unitSystem}
+      />
       <form className="text-content">
-        <div className="flex text-md items-center gap-x-3">
-          <span className="text-xl">Choose unit system:</span>
-          <UnitButton
-            handleUnitSystemChange={handleUnitSystemChange}
-            unitSystem={unitSystem}
-          />
-        </div>
         <div className="flex gap-x-6 mt-4 ">
           <label className="text-xl">
             Enter your weight:

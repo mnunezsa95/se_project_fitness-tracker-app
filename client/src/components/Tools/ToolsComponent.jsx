@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolCard from "./ToolCard";
 import BMICalculator from "./BMICalculator";
 import CalorieCalculator from "./CalorieCalculator";
-import WaterIntake from "./WaterIntake";
+import WaterIntakeCalculator from "./WaterIntakeCalculator";
 import bmiCalculatorDarkIcon from "../../images/bmi-calculator-dark.svg";
 import calorieCalculatorDarkIcon from "../../images/calories-calculator-dark.svg";
 import waterCalculatorDarkIcon from "../../images/h2o-calculator-dark.svg";
@@ -71,10 +71,12 @@ const ToolsComponent = () => {
         />
       )}
       {openTool && openTool.toolName === "Daily Water Intake Calculator" && (
-        <WaterIntake
+        <WaterIntakeCalculator
           isOpen={openTool}
           onClose={handleCloseModal}
           tool={openTool}
+          unitSystem={unitSystem}
+          handleUnitSystemChange={handleUnitSystemChange}
         />
       )}
     </div>

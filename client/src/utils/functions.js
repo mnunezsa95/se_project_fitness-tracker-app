@@ -6,7 +6,7 @@ export const calculateBMI = (weight, weightUnit, height, heightUnit) => {
   let weightInKg;
   let heightInCm;
 
-  if (weightUnit === "lbs") {
+  if (weightUnit === "lb") {
     weightInKg = weight * 0.453592;
   } else {
     weightInKg = weight;
@@ -61,7 +61,7 @@ export const calculateCalorieConsumption = (age, gender, weight, weightUnit, hei
   let heightInCm;
   gender = gender.toLowerCase();
 
-  if (weightUnit === "lbs") {
+  if (weightUnit === "lb") {
     weightInKg = weight * 0.453592;
   } else {
     weightInKg = weight;
@@ -94,6 +94,30 @@ export const calculateCalorieConsumption = (age, gender, weight, weightUnit, hei
 
   const totalCalories = bmr * (activityMultiplier[activity] || 1);
   return Math.round(totalCalories);
+};
+
+/* ----------------------------------- WATER INTAKE CALCULATOR ---------------------------------- */
+export const calculateWaterIntake = (weight, weightUnit, activity) => {
+  const WEIGHT_CONSTANT = 0.0245;
+  let weightInKg;
+
+  if (weightUnit === "lb") {
+    weightInKg = weight * 0.453592;
+  } else {
+    weightInKg = weight;
+  }
+
+  const activityMultiplier = {
+    sedentary: 0,
+    lightly_active: 0.35,
+    moderately_active: 0.67,
+    very_active: 1.05,
+    extra_active: 1.37,
+  };
+
+  const waterIntakeValue = weightInKg * WEIGHT_CONSTANT + activityMultiplier[activity];
+
+  return +waterIntakeValue.toFixed(2);
 };
 
 /* ---------------------------------------- FORMAT WORDS ---------------------------------------- */
