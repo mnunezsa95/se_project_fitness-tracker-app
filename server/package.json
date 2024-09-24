@@ -1,7 +1,6 @@
 {
   "name": "fitness-tracker-app-server",
   "version": "1.0.0",
-  "type": "module",
   "description": "",
   "keywords": [],
   "author": "Marlon Nunez",
@@ -21,6 +20,9 @@
     "prettier": "^2.8.8"
   },
   "dependencies": {
-    "express": "^5.0.0"
+    "dotenv": "^16.4.5",
+    "express": "^5.0.0",
+    "pg": "^8.13.0",
+    "pg-hstore": "^2.3.4"
   }
 }
