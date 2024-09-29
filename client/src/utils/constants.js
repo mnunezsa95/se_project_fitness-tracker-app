@@ -21,6 +21,8 @@ import cardioImageDark from "../images/cardio-dark.svg";
 import allImage from "../images/all.svg";
 import allImageDark from "../images/all-dark.svg";
 
+const BASE_URL = "http://localhost:3001/api/v1";
+
 export {
   chestImage,
   chestImageDark,
@@ -44,4 +46,5 @@ export {
   cardioImageDark,
   allImage,
   allImageDark,
+  BASE_URL,
 };

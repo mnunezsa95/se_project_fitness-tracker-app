@@ -10,13 +10,13 @@ import PropTypes from "prop-types";
 import LoginModal from "../Modal/LoginModal";
 import RegisterModal from "../Modal/RegisterModal";
 import { useEscapeKeyHandler } from "../../utils/functions";
-import CalendarComponent from "./CalendarComponent"; // Adjust the import path as needed
+import CalendarComponent from "./CalendarComponent";
 
 const NavBar = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const [showCalendar, setShowCalendar] = useState(false); // State for calendar visibility
+  const [showCalendar, setShowCalendar] = useState(false);
   const modalRef = useRef(null);
 
   const handleOpenLoginModal = () => setIsLoginModalOpen(true);

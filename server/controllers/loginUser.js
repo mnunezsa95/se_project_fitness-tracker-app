@@ -1,7 +1,8 @@
 const bcrypt = require("bcrypt");
 const pool = require("../db");
+const { findUserByUsernameQuery } = require("../queries/queries");
 
-const getUser = async (req, res) => {
+const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -9,8 +10,7 @@ const getUser = async (req, res) => {
   }
 
   try {
-    const findUserQuery = `SELECT * FROM users WHERE username = $1`;
-    const result = await pool.query(findUserQuery, [username]);
+    const result = await pool.query(findUserByUsernameQuery, [username]);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: "User not found" });
@@ -30,4 +30,4 @@ const getUser = async (req, res) => {
   }
 };
 
-module.exports = { getUser };
+module.exports = { loginUser };

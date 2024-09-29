@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const pool = require("../db");
+const { checkUserQuery, insertUserQuery } = require("../queries/queries");
 
 const saltRounds = 10;
 
@@ -15,7 +16,6 @@ const createUser = async (req, res) => {
   }
 
   try {
-    const checkUserQuery = `SELECT * FROM users WHERE email = $1 OR username = $2`;
     const result = await pool.query(checkUserQuery, [email, username]);
 
     if (result.rows.length > 0) {
@@ -23,12 +23,6 @@ const createUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-    const insertUserQuery = `
-      INSERT INTO users (first_name, last_name, email, username, password)
-      VALUES ($1, $2, $3, $4, $5)
-      RETURNING *
-    `;
 
     const newUser = await pool.query(insertUserQuery, [firstName, lastName, email, username, hashedPassword]);
 

@@ -1,5 +1,6 @@
 import Modal from "./Modal";
 import PropTypes from "prop-types";
+import { signin } from "../../utils/backendAPI";
 
 const LoginModal = ({
   isLoginModalOpen,
@@ -7,7 +8,14 @@ const LoginModal = ({
   handleRedirect,
   modalRef,
 }) => {
-  const handleLoginSubmit = () => {};
+  const handleLoginSubmit = async (evt) => {
+    evt.preventDefault();
+    const username = evt.target.username.value;
+    const password = evt.target.password.value;
+    const credentials = { username, password };
+    await signin(credentials);
+    handleCloseModal();
+  };
 
   return (
     <Modal
